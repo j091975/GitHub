@@ -5,3 +5,6 @@ def home(request):
 
 def wiki(request):
     return render(request, 'app/wiki.html')
+
+def links(request):
+    return render(request, 'app/links.html')
