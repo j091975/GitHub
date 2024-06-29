@@ -4,8 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Product</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'style2.css' %}">
+    <style>
+        /* static/store/css/style.css */
+    
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    
+    h1 {
+        color: #333;
+        text-align: center;
+        margin-top: 50px;
+    }
+    
+    form {
+        width: 300px;
+        margin: 0 auto;
+        padding: 30px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    form input, form button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+    button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #218838;
+    }
+    
+        </style> 
 </head>
 <body>
     <h1>Add Product</h1>
