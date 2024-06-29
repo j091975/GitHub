@@ -1,0 +1,30 @@
+# docker-compose.yml
+#version: '3.8'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app  # Mount current directory to /app in Docker container
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=my_azure_app_service.settings
+      - POSTGRES_DB='warehouse_db'
+      - POSTGRES_USER='myuser'  # Ensure this matches the user in PostgreSQL
+      - POSTGRES_PASSWORD='mypassword'  # Ensure this matches the password in PostgreSQL
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: warehouse_db
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:
