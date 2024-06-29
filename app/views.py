@@ -1,7 +1,25 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from django.db import connection
 from .models import product
 from .forms import ProductForm  # Assuming you have a form for the Product
+import random
+import string
+
+def generate_random_location():
+    # Randomly choose one of 'AND', 'BAS', 'SAL'
+    prefix = random.choice(['AND', 'BAS', 'SAL'])
+    
+    # Generate a random two-digit number between '01' and '99'
+    number_part = '{:02}'.format(random.randint(1, 99))
+    
+    # Generate a random uppercase letter
+    letter_part = random.choice(string.ascii_uppercase)
+    
+    # Combine all parts to form the location string
+    location = f"{prefix}-{number_part}-{letter_part}"
+    
+    return location
 
 def home(request):
     return render(request, 'app/home.html')
@@ -48,3 +66,29 @@ def db_schema(request):
 def product_list(request):
     products = product.objects.all()  # Query all products from the database
     return render(request, 'app/product_list.html', {'products': products})
+
+def generate_random_sku(length=10):
+    """ Generate a random SKU """
+    letters = string.ascii_letters + string.digits
+    return ''.join(random.choice(letters) for _ in range(length))
+
+def generate_random_product(request):
+    """ View to generate random products """
+    if request.method == 'POST':
+        num_products = int(request.POST.get('num_products', 1))
+        for _ in range(num_products):
+            products = product(
+                sku=generate_random_sku(),
+                name=f"Product {random.randint(1, 100)}",
+                description="Random description",
+                price=random.uniform(10, 1000),  # Adjust as needed
+                quantity=random.randint(0, 100),
+                location=generate_random_location(),
+            )
+            products.save()
+        return redirect('generate_products_success', num_products=num_products)
+    return render(request, 'app/generate_product.html')
+
+def generate_product_success(request, num_products):
+    """ Success page after generating products """
+    return render(request, 'app/generate_product_success.html', {'num_products': num_products})

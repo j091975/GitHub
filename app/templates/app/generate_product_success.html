@@ -1,14 +1,14 @@
+<!-- generate_product_success.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product</title>
+    <title>Products Generated Successfully</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'app/style.css' %}">
 </head>
 <body>
-    <h1>Add Product</h1>
+    <h1>{{ num_products }} random products generated successfully!</h1>
     <nav>
         <a href="{% url 'home' %}">Home</a> |
         <a href="{% url 'links' %}">Links</a> |
@@ -18,10 +18,7 @@
         <a href="{% url 'product_list' %}">Product List</a> |
         <a href="{% url 'db_schema' %}">DB Schema</a>
     </nav>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
-    </form>
+    <p>What would you like to do next?</p>
+
 </body>
 </html>
