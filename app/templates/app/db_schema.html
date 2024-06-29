@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Schema</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            margin-top: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Database Schema</h1>
+    <nav>
+        <a href="{% url 'home' %}">Home</a> |
+        <a href="{% url 'links' %}">Links</a> |
+        <a href="{% url 'wiki' %}">Wiki</a> |
+        <a href="{% url 'product_insert' %}">Product Insert</a> |
+        <a href="{% url 'product_list' %}">Product List</a> |
+        <a href="{% url 'db_schema' %}">DB Schema</a>
+    </nav>
+    {% for table in schema_data %}
+        <h2>Table: {{ table.table_name }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column Name</th>
+                    <th>Data Type</th>
+                    <th>Nullable</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for column in table.columns %}
+                    <tr>
+                        <td>{{ column.0 }}</td>
+                        <td>{{ column.1 }}</td>
+                        <td>{{ column.2 }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+</body>
+</html>

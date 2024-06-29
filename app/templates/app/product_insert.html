@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Data Engineering - Image Links</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style2.css' %}">
 </head>
 <body>
-    <h1>Image Links</h1>
+    <h1>Add Product</h1>
     <nav>
         <a href="{% url 'home' %}">Home</a> |
         <a href="{% url 'links' %}">Links</a> |
@@ -14,11 +17,10 @@
         <a href="{% url 'product_list' %}">Product List</a> |
         <a href="{% url 'db_schema' %}">DB Schema</a>
     </nav>
-    <p>Here are some image links related to data engineering:</p>
-    <ul>
-        <li><a href="https://example.com/image1.jpg">Image 1</a></li>
-        <li><a href="https://example.com/image2.jpg">Image 2</a></li>
-        <li><a href="https://example.com/image3.jpg">Image 3</a></li>
-    </ul>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
 </body>
 </html>
