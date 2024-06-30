@@ -21,16 +21,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-zk1f3)$2d8(h_7h-xj@v-0yf9f1ub6r61a)r)$z*$18^rk^(^@' #os.environ['SECRET_KEY']
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True #os.environ['DEBUG']
+DEBUG = os.environ['DEBUG']
 
  # Process the ALLOWED_HOSTS
-#allowed_hosts = os.environ['DJANGO_ALLOWED_HOSTS']
+allowed_hosts = os.environ['DJANGO_ALLOWED_HOSTS']
 
 # Split by spaces and filter out empty strings
-ALLOWED_HOSTS = ['*'] #allowed_hosts.split() if allowed_hosts else []
+ALLOWED_HOSTS = allowed_hosts.split() if allowed_hosts else []
 
 # Application definition
 
@@ -79,12 +79,12 @@ WSGI_APPLICATION = 'my_azure_app_service.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql', #os.environ['DATABASE_ENGINE'],
-        'NAME': 'warehouse_db', #os.environ['DATABASE_NAME'],
-        'USER': 'myuser', #os.environ['DATABASE_USER'],
-        'PASSWORD': 'mypassword', #os.environ['DATABASE_PASSWORD'],
-        'HOST': 'db', #os.environ['DATABASE_HOST'],
-        'PORT': '5432', #os.environ['DATABASE_PORT'],
+        'ENGINE': os.environ['DATABASE_ENGINE'],
+        'NAME': os.environ['DATABASE_NAME'],
+        'USER': os.environ['DATABASE_USER'],
+        'PASSWORD': os.environ['DATABASE_PASSWORD'],
+        'HOST': os.environ['DATABASE_HOST'],
+        'PORT': os.environ['DATABASE_PORT'],
     }
 }
 
