@@ -1,10 +1,15 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db import connection
-from .models import product
+from .models import product, SoccerPlayer
 from .forms import ProductForm  # Assuming you have a form for the Product
 import random
 import string
+from django.views.generic import View
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+
 
 def generate_random_location():
     # Randomly choose one of 'AND', 'BAS', 'SAL'
@@ -92,3 +97,20 @@ def generate_random_product(request):
 def generate_product_success(request, num_products):
     """ Success page after generating products """
     return render(request, 'app/generate_product_success.html', {'num_products': num_products})
+
+class ShowcaseView(View):
+    
+    def get(self, request):
+        return render(request, 'app/showcase.html')
+
+    @method_decorator(csrf_exempt)  # Only for demonstration, not secure in production
+    def post(self, request):
+        colors = ['red', 'green', 'blue', 'yellow', 'orange', 'purple']
+        random_color = random.choice(colors)
+        #print(random_color)
+        return JsonResponse({'color': random_color})
+    
+def search_players(request):
+    query = request.GET.get('q', '')
+    results = SoccerPlayer.objects.filter(name__icontains=query) if query else []
+    return render(request, 'app/search.html', {'query': query, 'results': results})

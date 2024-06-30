@@ -19,3 +19,14 @@ class product(models.Model):
         
     def __str__(self):
         return self.name
+    
+class SoccerPlayer(models.Model):
+    name = models.CharField(max_length=100)
+    position = models.CharField(max_length=50)
+    club = models.CharField(max_length=100)
+    country = models.CharField(max_length=100)
+    goals = models.IntegerField(default=0)
+    assists = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.name

@@ -10,5 +10,7 @@ urlpatterns = [
     path('product_list/', views.product_list, name='product_list'),
     path('generate_product/', views.generate_random_product, name='generate_product'),
     path('generate_products/success/<int:num_products>/', views.generate_product_success, name='generate_products_success'),
+    path('showcase', views.ShowcaseView.as_view(), name='showcase'),
+    path('search/', views.search_players, name='search_players'),
 ]
  
