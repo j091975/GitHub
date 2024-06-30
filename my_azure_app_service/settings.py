@@ -125,15 +125,14 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/app/'
+STATIC_URL = '/app/static/app/'
 
 # The directory where collectstatic will gather all static files
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Additional directories to look for static files
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'app/static'),
+    os.path.join(BASE_DIR, 'app/static/app'),
 ]
 
 # Default primary key field type
