@@ -1,13 +1,13 @@
+<!-- generate_random_product.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Data Engineering - Image Links</title>
+    <title>Generate Random Products</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'app/style.css' %}">
 </head>
 <body>
-    <h1>Image Links</h1>
+    <h2>Generate Random Products</h2>
     <nav>
         <a href="{% url 'home' %}">Home</a> |
         <a href="{% url 'links' %}">Links</a> |
@@ -18,11 +18,11 @@
         <a href="{% url 'db_schema' %}">DB Schema</a> |
         <a href="{% url 'showcase' %}">Showcase</a>
     </nav>
-    <p>Here are some image links related to data engineering:</p>
-    <ul>
-        <li><a href="https://example.com/image1.jpg">Image 1</a></li>
-        <li><a href="https://example.com/image2.jpg">Image 2</a></li>
-        <li><a href="https://example.com/image3.jpg">Image 3</a></li>
-    </ul>
+    <form method="post">
+        {% csrf_token %}
+        <label for="num_products">Number of Products:</label>
+        <input type="number" id="num_products" name="num_products" value="1" min="1" max="100">
+        <button type="submit">Generate</button>
+    </form>
 </body>
 </html>

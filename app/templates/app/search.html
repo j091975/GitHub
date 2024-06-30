@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Soccer Player Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .search-box {
+            margin: 20px;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .player {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-box">
+        <form method="GET">
+            <label for="search">Search for a soccer player:</label>
+            <input type="text" id="search" name="q" value="{{ query }}">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div class="results">
+        {% if query and results %}
+            <h2>Results for "{{ query }}":</h2>
+            {% for player in results %}
+                <div class="player">
+                    <h3>{{ player.name }}</h3>
+                    <p><strong>Position:</strong> {{ player.position }}</p>
+                    <p><strong>Club:</strong> {{ player.club }}</p>
+                    <p><strong>Country:</strong> {{ player.country }}</p>
+                    <p><strong>Goals:</strong> {{ player.goals }}</p>
+                    <p><strong>Assists:</strong> {{ player.assists }}</p>
+                </div>
+            {% endfor %}
+        {% elif query %}
+            <p>No players found for "{{ query }}".</p>
+        {% endif %}
+    </div>
+</body>
+</html>
