@@ -43,8 +43,8 @@ def product_insert(request):
             return redirect('product_insert')  # Redirect to a list of products or a success page
     else:
         form = ProductForm()
-    context = {'form': form}
-    return render(request, 'app/product_insert.html', {'form': form}, context)
+
+    return render(request, 'app/product_insert.html', {'form': form})
 
 def db_schema(request):
     schema_data = []

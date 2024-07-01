@@ -31,9 +31,7 @@
     
     <form method="post">
         {% csrf_token %} 
-        {{ form.as_p }}
         <button type="submit">Change Color</button>
-        <div class="box" id="color-box"></div>
     </form>
 
     <div class="box" id="color-box2"></div>
@@ -52,7 +50,7 @@
                     },
                     data: {},
                     success: function(data) {
-                        $('#color-box').css('background-color', data.color);
+                        $('#color-box2').css('background-color', data.color);
                     }
                 });
             });
