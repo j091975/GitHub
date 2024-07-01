@@ -28,7 +28,15 @@
         <a href="{% url 'db_schema' %}">DB Schema</a> |
         <a href="{% url 'showcase' %}">Showcase</a>
     </nav>
-    <div class="box" id="color-box"></div>
+    
+    <form method="post">
+        {% csrf_token %} 
+        {{ form.as_p }}
+        <button type="submit">Change Color</button>
+        <div class="box" id="color-box"></div>
+    </form>
+
+    <div class="box" id="color-box2"></div>
     <button id="change-color-btn">Change Color</button>
 
     <script>

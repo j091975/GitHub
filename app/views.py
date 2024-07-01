@@ -43,8 +43,8 @@ def product_insert(request):
             return redirect('product_insert')  # Redirect to a list of products or a success page
     else:
         form = ProductForm()
-
-    return render(request, 'app/product_insert.html', {'form': form})
+    context = {'form': form}
+    return render(request, 'app/product_insert.html', {'form': form}, context)
 
 def db_schema(request):
     schema_data = []
@@ -92,7 +92,8 @@ def generate_random_product(request):
             )
             products.save()
         return redirect('generate_products_success', num_products=num_products)
-    return render(request, 'app/generate_product.html')
+    context = {'request': request}
+    return render(request, 'app/generate_product.html',context)
 
 def generate_product_success(request, num_products):
     """ Success page after generating products """
@@ -103,7 +104,6 @@ class ShowcaseView(View):
     def get(self, request):
         return render(request, 'app/showcase.html')
 
-    @method_decorator(csrf_exempt)  # Only for demonstration, not secure in production
     def post(self, request):
         colors = ['red', 'green', 'blue', 'yellow', 'orange', 'purple']
         random_color = random.choice(colors)
