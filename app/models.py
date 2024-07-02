@@ -11,8 +11,8 @@ class product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.IntegerField(default=0)
     location = models.TextField()
-    DateAdded = models.DateField(default=datetime.now)
-    DateUpdated = models.DateField(default=datetime.now)
+    dateadded = models.DateField(default=datetime.now)
+    dateupdated = models.DateField(default=datetime.now)
     
     class Meta:
         db_table = 'store_product'  # Explicitly specify the table name
