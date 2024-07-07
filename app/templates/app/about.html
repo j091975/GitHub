@@ -146,14 +146,14 @@ data-react-helmet="lang">
                     // Change slides automatically every 3 seconds (3000 milliseconds)
                     let autoScrollInterval = setInterval(() => {
                         changeSlide(1);
-                    }, 3000);
+                    }, 6000);
                 
                     function changeSlide(n) {
                         clearInterval(autoScrollInterval); // Stop automatic scrolling
                         showSlide(slideIndex += n);
                         autoScrollInterval = setInterval(() => { // Restart automatic scrolling after manual change
                             changeSlide(1);
-                        }, 3000);
+                        }, 6000);
                     }
                 
                     function showSlide(n) {
