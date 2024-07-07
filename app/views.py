@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db import connection
-from .models import product, SoccerPlayer
+from .models import product, SoccerPlayer, Slide
 from .forms import ProductForm  # Assuming you have a form for the Product
 import random
 import string
@@ -9,6 +9,8 @@ from django.views.generic import View
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+
+from django.views import View
 
 
 def generate_random_location():
@@ -29,11 +31,21 @@ def generate_random_location():
 def home(request):
     return render(request, 'app/home.html')
 
+def base(request):
+    return render(request, 'app/base.html')
+
 def wiki(request):
     return render(request, 'app/wiki.html')
 
 def links(request):
     return render(request, 'app/links.html')
+
+def careers(request):
+    return render(request, 'app/careers.html')
+
+def about(request):
+    slides = Slide.objects.all()  # Fetch all slides from database
+    return render(request, 'app/about.html', {'slides': slides})
 
 def product_insert(request):
     if request.method == 'POST':
@@ -91,9 +103,10 @@ def generate_random_product(request):
                 location=generate_random_location(),
             )
             products.save()
-        return redirect('generate_products_success', num_products=num_products)
+        #return redirect('generate_products_success', num_products=num_products)
     context = {'request': request}
-    return render(request, 'app/generate_product.html',context)
+    products = product.objects.all().order_by('-product_id')  # Query all products from the database
+    return render(request, 'app/generate_product.html',{'products': products})
 
 def generate_product_success(request, num_products):
     """ Success page after generating products """
@@ -107,7 +120,7 @@ class ShowcaseView(View):
     def post(self, request):
         colors = ['red', 'green', 'blue', 'yellow', 'orange', 'purple']
         random_color = random.choice(colors)
-        #print(random_color)
+        
         return JsonResponse({'color': random_color})
     
 def search_players(request):
