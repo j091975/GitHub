@@ -1,139 +1,50 @@
-<html lang="en"
-data-react-helmet="lang">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="x-ua-compatible" content="ie=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends "app/base.html" %}
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'app/button.css' %}">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        .box {
-            width: 200px;
-            height: 200px;
-            background-color: lightgray;
-            margin: 20px;
-            display: inline-block;
-            transition: background-color 0.3s;
-        }
-    </style>
-    <title>Colour Change</title>
-    <script>
-            window.prismic = {
-            endpoint: 'https://cfs-website.prismic.io/api/v2',
-            };
-            window.prismicGatsbyOptions = {"plugins":[],"repositoryName":"cfs-website","accessToken":null,"path":"/preview","previews":true,"sharpKeys":[{}]};
-    </script>
+{% block title %}Careers Page{% endblock %}
 
-</head>
+{% block content %}
+<style>
+    .home {
+        width: 100%;
+        height: 15vh;
+        background-position: center top;
+        background-size: cover;
+        background-attachment: fixed; /* This ensures the background is fixed */
+    }
+    .box {
+        width: 200px;
+        height: 200px;
+        background-color: lightgray;
+        margin: 20px;
+        display: inline-block;
+        transition: background-color 0.3s;
+    }
+</style>
 
-<body>
-    <main>
-    <noscript id="gatsby-noscript">This app works best with JavaScript enabled.</noscript>
-    <div id="___gatsby">
-        <div style="outline:none" tabindex="-1" role="group" id="gatsby-focus-wrapper">
-            <div class="mainLayout">
-                <a href="#site-main" class="skip-main">Skip to content</a>
-                <div class="MainNav-module--nav__wrapper--3yQlv MainNav-module--forest--1xv9U">
-                    <nav class="MainNav-module--nav--1RSFd">
-                        <a aria-current="page" class="MainNav-module--logoContainer--1ESOX" href="/">
-                            <div class="MainNav-module--logo--1Pz1t">
-            
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 162.8 164.8" width="162.8" height="164.8" aria-hidden="true">
-                                <!--    <title>ICON</title>
-                                    <defs>
-                                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                            <stop offset="0%" style="stop-color:purple;stop-opacity:1" />
-                                            <stop offset="100%" style="stop-color:light mauve;stop-opacity:1" />
-                                        </linearGradient>
-                                    </defs>
-                                    <path fill="url(#gradient)" d="M83 0h-3.2l-4.6 21.7 4.6 21.7H83l4.6-21.7zM83 121.3h-3.2l-4.6 21.8 4.6 21.7H83l4.6-21.7zM54.7 4.4l-3 1.1 3.1 22 11.8 18.8 3-1.1-3.1-21.9zM96.2 118.4l-3 1.1 3.1 22 11.8 18.8 3-1-3.1-22zM29.7 18.3l-2.5 2 10.5 19.6 17.5 13.7 2.4-2.1-10.4-19.6zM107.7 111.2l-2.5 2 10.5 19.6 17.5 13.7 2.4-2-10.5-19.6zM10.9 39.8l-1.6 2.8 16.5 14.8 21.1 6.9 1.6-2.8-16.5-14.8zM115.9 100.5l-1.5 2.7 16.5 14.9 21.1 6.8 1.5-2.7-16.5-14.8zM.5 66.5L0 69.6l20.6 8.3 22.2-.7.5-3.1-20.6-8.3zM120 87.6l-.5 3.1 20.6 8.3 22.2-.8.5-3.1-20.6-8.3zM0 95.1l.5 3.1 22.2.8 20.6-8.3-.5-3.1-22.2-.8zM119.5 74.1l.5 3.1 22.2.7 20.6-8.3-.5-3.1-22.2-.7zM9.3 122.2l1.5 2.7 21.2-6.8 16.5-14.9-1.6-2.7-21.1 6.9zM114.4 61.5l1.5 2.8 21.1-6.9 16.5-14.8-1.5-2.8-21.1 6.9zM27.2 144.5l2.5 2 17.5-13.7 10.4-19.6-2.4-2-17.5 13.7zM105.2 51.5l2.5 2.1 17.4-13.7 10.5-19.6-2.4-2-17.5 13.6zM51.7 159.3l3 1 11.8-18.8 3.1-22-3-1.1-11.8 18.9zM93.2 45.2l3 1.1L108 27.5l3.1-22-3-1.1-11.8 18.9z"></path>
-                                </svg>-->
-                                <title>Face Icon</title>
-                                <defs>
-                                    <!-- Define a gradient for the face if needed -->
-                                    <linearGradient id="faceGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" style="stop-color:white" />
-                                    </linearGradient>
-                                </defs>
-                                <!-- Left eye -->
-                                <circle cx="61" cy="63" r="5" fill="url(#faceGradient)" />
-                                
-                                <!-- Right eye -->
-                                <circle cx="101" cy="63" r="5" fill="url(#faceGradient)" />
-                                
-                                <!-- Nose -->
-                                <path d="M81.4 85.4 L77.4 93.4 L85.4 93.4 Z" fill="url(#faceGradient)" />
-                                
-                                <!-- Mouth -->
-                                <path d="M71 110 Q 81 115, 91 110" fill="none" stroke="url(#faceGradient)" stroke-width="4" />
-                
-                                <!-- Spiky hair strands -->
-                                <path d="M70 40 Q 55 40, 65 35 Q 75 40" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
-                                <path d="M70 40 Q 85 40, 95 35 Q 105 40" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
-                                <path d="M70 40 Q 65 20, 75 15 Q 85 20" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
-                                <path d="M70 40 Q 75 15, 85 10 Q 95 15" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
-                            
-                            </svg>
-            
-                            <span class="MainNav-module--logo__name--3rJIc">Jason Lankshear</span>
-                        </div>
-    
-                        <div class="MainNav-module--name--179jl">
-                            <p class="MainNav-module--name__text--2F1UV" tabindex="-1">Home</p>
-    
-                        </div>
+<div class="home">
+    <div>
+        <h3 style="
+        ttext-align: left;
+        font-family: 'Roboto', serif;
+        font-size: 2.5rem;
+        color: black;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        font-size: 2rem;
+        margin-top: 0vh;">
+        A simple JavaScript showcase. Using a Python randon generation function in view.py to change the colour of a box.
+        <br>
+        <br>
+        <p id="color-display">Color will appear here</p>
+        <br>
+        <button id="change-color-btn" style="padding: 10px;">Change Color</button>
+        <br>
+        <br>
+        </h3>
+    </div>
+</div>
+<div class="box" id="color-box2"></div>
 
-
-
-                        <ul class="MainNav-module--menu--bcIv9">
-                            <li class="MainNav-module--menu__item--H7APR">
-                                <a class="MainNav-module--menu__item-link--oOWq2" aria-expanded="false" href="/generate_product">Generate Product(s)</a>
-                                <button type="button" aria-expanded="false" class="NavLink-module--sub-menu__button--2AVLG MainNav-module--sub-menu__button--3SfpC"></button>
-                            </li>
-                            <li class="MainNav-module--menu__item--H7APR">
-                                <a class="MainNav-module--menu__item-link--oOWq2" aria-expanded="false" href="/about">About</a>
-                                <button type="button" aria-expanded="false" class="NavLink-module--sub-menu__button--2AVLG MainNav-module--sub-menu__button--3SfpC"></button>
-                            </li>
-                            <li class="MainNav-module--menu__item--H7APR">
-                                <a class="MainNav-module--menu__item-link--oOWq2" aria-expanded="false" href="/showcase">Box</a>
-                                <button type="button" aria-expanded="false" class="NavLink-module--sub-menu__button--2AVLG MainNav-module--sub-menu__button--3SfpC"></button>
-                            </li>    
-                        </ul>
-
-                        <button class="MainNav-module--menu-button--1sQeN MenuToggleButton-module--button--hLtgu" aria-label="Open menu">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" class="MenuToggleButton-module--menu__svg--q7CTx">
-                                <rect class="MenuToggleButton-module--rect--LFFNk" x="5" y="17" width="26" height="1"></rect>
-                                <rect class="MenuToggleButton-module--rect--LFFNk" x="5" y="17" width="26" height="1"></rect>
-                                <rect class="MenuToggleButton-module--rect--LFFNk" x="5" y="17" width="26" height="1"></rect>
-                                <rect class="MenuToggleButton-module--rect--LFFNk" x="5" y="17" width="26" height="1"></rect>
-                            </svg>
-                        </button>
-                    </nav>
-                </div>
-                
-                <div>
-                    <div style="transition:opacity 300ms cubic-bezier(0.55, 0.085, 0.68, 0.53);opacity:1">
-                        <main id="site-main" class="mainContent mainContentOverlaid">
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                        
-                <!--
-                put in you sites html here
-                -->
-                <div class="Topper-module--content--2u5Hx" style="width: 100%;  padding: 50px 0;"><div 
-                    class="Topper-module--header--1dmbr">
-        
-                    <section class="Footer-module--hiring--373U3">
-                        <div class="Footer-module--hiring__content--27HeO">
-                        <p>A simple JavaScript showcase. Using functions to change the colour of a box.</p>
-                            <div class="box" id="color-box2"></div>
-<p id="color-display">Color will appear here</p>
-<button id="change-color-btn">Change Color</button>
 
 <script>
     function rgbToColorName(rgb) {
@@ -192,101 +103,15 @@ data-react-helmet="lang">
     });
 </script>
 
-                        
-            </div>
-        </div>
-            
-    </main>
 
-<footer class="Footer-module--footer--VUGIP">
-    <section class="Footer-module--hiring--373U3">
-        <div class="Footer-module--hiring__content--27HeO">    
-            <h2>Do or do not. There is no try.</h2>
-            <div class="Footer-module--links--3GWS2">
-            <div>
-            <div class="Footer-module--links--3GWS2">
-            <div>
-        </div>
-    </section>
+{% endblock %}
 
+{% block content3 %}
+<h2>Do or do not. There is no try.</h2>
+{% endblock %}
 
-    <section class="Footer-module--info--1zEa1">
-        <figure class="Footer-module--info__logo--1UFsL">
-            <a aria-current="page" class="" href="/">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 162.8 164.8" width="162.8" height="164.8" aria-hidden="true">
-                    <!--
-                    <title>ICON</title>
-                    <defs>
-                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color:purple;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:light mauve;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <path fill="url(#gradient)" d="M83 0h-3.2l-4.6 21.7 4.6 21.7H83l4.6-21.7zM83 121.3h-3.2l-4.6 21.8 4.6 21.7H83l4.6-21.7zM54.7 4.4l-3 1.1 3.1 22 11.8 18.8 3-1.1-3.1-21.9zM96.2 118.4l-3 1.1 3.1 22 11.8 18.8 3-1-3.1-22zM29.7 18.3l-2.5 2 10.5 19.6 17.5 13.7 2.4-2.1-10.4-19.6zM107.7 111.2l-2.5 2 10.5 19.6 17.5 13.7 2.4-2-10.5-19.6zM10.9 39.8l-1.6 2.8 16.5 14.8 21.1 6.9 1.6-2.8-16.5-14.8zM115.9 100.5l-1.5 2.7 16.5 14.9 21.1 6.8 1.5-2.7-16.5-14.8zM.5 66.5L0 69.6l20.6 8.3 22.2-.7.5-3.1-20.6-8.3zM120 87.6l-.5 3.1 20.6 8.3 22.2-.8.5-3.1-20.6-8.3zM0 95.1l.5 3.1 22.2.8 20.6-8.3-.5-3.1-22.2-.8zM119.5 74.1l.5 3.1 22.2.7 20.6-8.3-.5-3.1-22.2-.7zM9.3 122.2l1.5 2.7 21.2-6.8 16.5-14.9-1.6-2.7-21.1 6.9zM114.4 61.5l1.5 2.8 21.1-6.9 16.5-14.8-1.5-2.8-21.1 6.9zM27.2 144.5l2.5 2 17.5-13.7 10.4-19.6-2.4-2-17.5 13.7zM105.2 51.5l2.5 2.1 17.4-13.7 10.5-19.6-2.4-2-17.5 13.6zM51.7 159.3l3 1 11.8-18.8 3.1-22-3-1.1-11.8 18.9zM93.2 45.2l3 1.1L108 27.5l3.1-22-3-1.1-11.8 18.9z"></path>
-                </svg>
-
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 162.8 164.8" width="162.8" height="164.8" aria-hidden="true">
-                -->
-                <title>Face Icon</title>
-                    <defs>
-                        <!-- Define a gradient for the face if needed -->
-                        <linearGradient id="faceGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color:white" />
-                       </linearGradient>
-                    </defs>
-                    <!-- Left eye -->
-                    <circle cx="61" cy="63" r="5" fill="url(#faceGradient)" />
-
-                    <!-- Right eye -->
-                    <circle cx="101" cy="63" r="5" fill="url(#faceGradient)" />
-
-                    <!-- Nose -->
-                    <path d="M81.4 85.4 L77.4 93.4 L85.4 93.4 Z" fill="url(#faceGradient)" />
-
-                    <!-- Mouth -->
-                    <path d="M71 110 Q 81 115, 91 110" fill="none" stroke="url(#faceGradient)" stroke-width="4" />
-
-                    <!-- Spiky hair strands -->
-                    <path d="M70 40 Q 55 40, 65 35 Q 75 40" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
-                    <path d="M70 40 Q 85 40, 95 35 Q 105 40" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
-                    <path d="M70 40 Q 65 20, 75 15 Q 85 20" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
-                    <path d="M70 40 Q 75 15, 85 10 Q 95 15" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
-                
-                </svg>
-            
-        </a>
-    </figure>
-    <address class="Footer-module--info__address--2Flzo"><p>Jason Lankshear<br>Andover<br>Hampshire<br>
-        
-    </address>
-    <div class="Footer-module--info__contacts--35p5X">
+{% block quotes %}
+<blockquote class="blockquote">
     
-        <address class="Footer-module--info__contact--3uCF9">LinkedIn<br>
-        <a href="https://www.linkedin.com/in/jason-lankshear-b65a21214" title="Go to LinkedIn.com">Profile</a>
-
-        </address>
-    
-        <!--
-        <address class="Footer-module--info__contact--3uCF9">General Inquiries<br>
-            <a href="mailto:info@cfs.energy">info@cfs.energy</a>
-        </address>
-        <div class="Footer-module--info__contact--3uCF9">
-            <a href="https://energy.us7.list-manage.com/subscribe/post?u=2e7db0453a9549603d236a816&amp;id=2789c5b009">Join our mailing list</a>
-        </div>
-    
-    -->
-</div>
-    <ul class="Footer-module--info__nav--2Imcm">
-        <li><a href="/careers">Careers</a>
-        </li>
-    </ul>
-    </section>
-</footer>
-
-
-</div>
-</div>
-</div>
-
-</body>
-</html>
+</blockquote>
+{% endblock %}

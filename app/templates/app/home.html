@@ -1,29 +1,90 @@
-{% extends 'app/base.html' %}
+{% extends "app/base.html" %}
 
-{% block title %}Home | Jason{% endblock %}
-
-{% block extra_head %}
-    <script>
-        window.prismic = {
-            endpoint: 'https://cfs-website.prismic.io/api/v2',
-        };
-        window.prismicGatsbyOptions = {"plugins":[],"repositoryName":"cfs-website","accessToken":null,"path":"/preview","previews":true,"sharpKeys":[{}]};
-    </script>
-{% endblock %}
+{% block title %}Home Page{% endblock %}
 
 {% block content %}
-    <!-- Your home page specific content goes here -->
-    <div id="site-main">
-        <!-- Your existing content from the home page -->
-        <!-- Example: -->
-        <h1>Welcome to my site!</h1>
-        <p>This is the home page content.</p>
-    </div>
-{% endblock %}
+<style>
+    .home {
+        width: 100%;
+        height: 50vh;
+        background-image: url('https://wallpapercave.com/wp/wp2762359.jpg');
+        background-position: center top;
+        background-size: cover;
+        background-attachment: fixed; /* This ensures the background is fixed */
+    }
+</style>
 
-{% block footer %}
-    <!-- Your footer content -->
-    <footer>
-        <p>&copy; 2024 Jason</p>
+<div class="home">
+    <div class="Topper-module--content--2u5Hx"><div 
+        class="Topper-module--header--1dmbr">
+        <h1 class="Topper-module--title--1uUdD">Turning Data Challenges into Opportunities.</h1>
+    </div>
+</div>
+{% endblock %}
+{% block content3 %}
+        <h2>Choose sustainability over excess;<br> our planet's future depends on it.</h2>
+        {% endblock %}
+{% block quotes %}
+<blockquote class="blockquote">
+    <!-- Soundbite quotes go here -->
+    <div style="background-color: rgb(21, 37, 54);">
+        <div style="width: 100%;  padding: 50px 0;">
+        <div class="Topper-module--benefits--2kaZ9">
+            <div class="Topper-module--benefit--37IVh Topper-module--benefit--active--7f7pL" style="color: white;">
+            <h5 class="Topper-module--benefit__header--3y7UY">Data Collection</h5>
+            
+            <div class="Topper-module--benefit__body--eTyxt" style="color: white;">
+                <p>Ensure that all relevant data points are captured to provide a comprehensive view.</p>
+            </div>
+
+        </div>
+    
+        <div class="Topper-module--benefit--37IVh Topper-module--benefit--active--7f7pL" style="color: white;">
+            <h5 class="Topper-module--benefit__header--3y7UY">Data Storage</h5>
+            <div class="Topper-module--benefit__body--eTyxt" style="color: white;">
+                <p>Accessibility and scalability are key considerations.</p>
+            </div>
+        </div>
+        <div class="Topper-module--benefit--37IVh Topper-module--benefit--active--7f7pL" style="color: white;">
+            <h5 class="Topper-module--benefit__header--3y7UY">Insights</h5>
+            <div class="Topper-module--benefit__body--eTyxt" style="color: white;">
+                <p>Businesses invest in data to gain valuable insights.</p>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="Section-module--section--35E8i" style="font-size: 1.7rem;">
+        <div class="Section-module--sectionInner--3B0PK">
+
+            <ul class="Values-module--values--2V9nS">
+                <li class="Values-module--value--3BOh-">
+                    <h5 class="Values-module--value__title--3Q1YK">Execution</h5>
+                    <div class="Values-module--value__desc--2fzuZ">
+                        <p>Get things done. Refuse to stagnate. Deliver with speed.</p>
+                    </div>
+                </li>
+                <li class="Values-module--value--3BOh-"><h5 class="Values-module--value__title--3Q1YK">Refining</h5>
+                    <div class="Values-module--value__desc--2fzuZ">
+                        <p>Find and build on your best qualities.</p>
+                    </div>
+                </li>
+                <li class="Values-module--value--3BOh-"><h5 class="Values-module--value__title--3Q1YK">Integrity</h5>
+                    <div class="Values-module--value__desc--2fzuZ">
+                        <p>Stand firm in your values, even when no one is watching.</p>
+                    </div>
+                </li>
+                <li class="Values-module--value--3BOh-">
+                    <h5 class="Values-module--value__title--3Q1YK">Impact</h5>
+                    <div class="Values-module--value__desc--2fzuZ">
+                        <p>Create change that resonates beyond today.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <footer class="blockquote-footer">
+        
+        
     </footer>
+</blockquote>
 {% endblock %}
