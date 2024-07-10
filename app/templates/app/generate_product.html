@@ -47,12 +47,14 @@
         padding: 20px;
         font-size: 2rem;
         margin-top: 0vh;">
-        Connecting to a PostgreSQL database to display table contents and perform random data inserts.
+        This page simply has a connection to a PostgreSQL database table of products, it's purpose to display the table contents and perform data inserts.
+        <br>
+        The button and int selector will generate up to 100 records at a time, using Python to generate randon SKU's, Product Name, Price, Quantity and Location.
         <br>
         <br>
         Generate Random Products:
         <br>
-
+        
         <form method="post">
             {% csrf_token %}
             
@@ -62,14 +64,15 @@
             </form>
         </h4>
     </div>
-
+    <br>
     <div>
     </div>
     </section>
     
     </div>
     <div class="container">
-    
+    <br>
+    <br>
     <table >
         <thead>
             <tr>

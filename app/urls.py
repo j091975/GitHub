@@ -11,5 +11,5 @@ urlpatterns = [
     path('showcase', views.ShowcaseView.as_view(), name='showcase'),
     path('base/', views.base, name='base'),
     path('careers/', views.careers, name='careers'),
-    path('data-page/', views.data_page, name='data_page'),
+    path('data_page/', views.data_page, name='data_page'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

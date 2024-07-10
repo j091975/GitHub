@@ -6,28 +6,166 @@
 <style>
     .home {
         width: 100%;
-        height: 45vh;
+        height: 15vh;
         background-position: center top;
         background-size: cover;
+        font-size: 2.5rem;
         background-attachment: fixed; /* This ensures the background is fixed */
     }
+    table {
+        width: 50%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 16px;
+        font-family: 'Arial, sans-serif';
+        box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        margin-left: 15%; /* Move the table 15% to the right */
+      }
+      
+      /* Table Header Styling */
+      table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+        font-weight: bold;
+      }
+      
+      table thead th, table tbody td {
+        padding: 12px 15px;
+      }
+      
+      /* Table Body Styling */
+      table tbody tr {
+        border-bottom: 1px solid #dddddd;
+      }
+      
+      /* Alternating Row Colors */
+      table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+      }
+      
+      /* Hover Effects */
+      table tbody tr:hover {
+        background-color: #f1f1f1;
+      }
+      
+      /* Active Row Styling */
+      table tbody tr:active {
+        background-color: #d1d1d1;
+      }
+      
+      /* Responsive Table */
+      @media (max-width: 768px) {
+        table, thead, tbody, th, td, tr {
+          display: block;
+        }
+      
+        table thead {
+          display: none;
+        }
+      
+        table tbody tr {
+          margin-bottom: 15px;
+        }
+      
+        table tbody tr td {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px;
+          border: none;
+          border-bottom: 1px solid #dddddd;
+          position: relative;
+          padding-left: 50%;
+          text-align: right;
+        }
+      
+        table tbody tr td::before {
+          content: attr(data-label);
+          position: absolute;
+          left: 0;
+          width: 45%;
+          padding-left: 15px;
+          font-weight: bold;
+          text-align: left;
+        }
+      }
 </style>
 
 <div class="home">
     <div>
-        <h4 style="
+        <div><div 
+            class="Topper-module--header--1dmbr"> <p style="
         text-align: left;
         font-family: 'Roboto', serif;
-        font-size: 2.5rem;
+        font-size: 2rem;
         color: black;
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         padding: 20px;
         font-size: 2rem;
-        margin-top: 0vh;">
-        Oh, you don't have one? Have you ever entertained the possibility that maybe, the problem is... you?
-        </h3>
+        left-padding: 15px;">
+        <p>The following data is sourced from the <code>sklearn.datasets</code> module, specifically the <code>california_housing</code> dataset.<br>
+             A dataframe displaying the first 25 rows is shown below.</p>
+            </div>
+        </div>
+        
+
+        <br>
+        <br>
+    </p>
     </div>
-</div>
+    <br>
+    <div>
+    </div>
+    </section>
+    
+    </div>
+    <div class="container">
+    <br>
+    <br>
+       <div class="table">
+        <h2 class="text-center" style="margin-left: 15%;">California Housing DataFrame Display</h2>
+        <div style="ont-size: 2.5rem;">
+            {{ cal_housing|safe }}
+        </div>
+    
+    
+    <br>
+    <br>
+    <div class="container plot-container">
+
+
+        <h3 class="text-center" style="margin-left: 15%;">Understanding the Correlation Matrix</h3>
+        <h4 class="text-center" style="margin-left: 15%;">A correlation matrix is a table displaying the correlation coefficients between multiple variables.<br>
+            Each cell in the matrix shows the correlation between two variables, with values ranging from -1 to 1. <br>
+            These coefficients help identify which variables move together, aiding in feature selection and analysis.</h4>
+            <br>
+        <img style="height: 450px; width: 450px; margin-left: 15%;" src="{{ Correlation_Matrix_url }}" alt="Correlation Matrix">
+        <br>
+        <br>
+        <h3 class="text-center" style="margin-left: 15%;">Distribution of Median House Value</h3>
+        <h4 class="text-center" style="margin-left: 15%;">Distribution of Median House Value graph serves as a fundamental tool for understanding the 
+            <br>structure and characteristics of median house prices within a dataset, offering insights that are crucial for analysis,<br>
+             planning, and decision-making in various domains, especially in real estate and economic studies.<h4>
+        <br>
+        <img style="height: 450px; width: 450px; margin-left: 15%;" src="{{ Distribution_of_Median_House_Value_url }}" alt="Distribution of Median House Value">
+        <br>
+        <br>
+
+        <h3 class="text-center" style="margin-left: 15%;">Feature Importance from Random Forest</h3>
+        <h4 class="text-center" style="margin-left: 15%;">Feature importance scores from a Random Forest model indicate the relative importance of each feature<br>
+             in making predictions. These scores help in understanding which features contribute the most to the predictive power of the model, <br>
+             guiding us in feature selection and engineering.</h4>
+             <br>
+             <img style="height: 450px; width: 450px; margin-left: 15%;" src="{{ Feature_Importance_from_Random_Forest_url }}" alt="Feature Importance Plot">
+        <br>
+        <br>
+    </div>
+    </div>
+    </div>
+
+
+
 {% endblock %}
 
 {% block content3 %}
@@ -36,6 +174,20 @@
 
 {% block quotes %}
 <blockquote class="blockquote">
+
+    <div class="Section-module--section--35E8i" style="font-size: 1.7rem;">
+        <div class="Section-module--sectionInner--3B0PK">
+
+            <ul class="Values-module--values--2V9nS">
+                <li class="Values-module--value--3BOh-">
+                    <h5 class="Values-module--value__title--3Q1YK">Summary</h5>
+                    <div class="Values-module--value__desc--2fzuZ">
+                        <p>By leveraging the correlation matrix and feature importance from a Random Forest model, we can make informed decisions about feature selection and engineering, ultimately leading to more efficient and effective data analysis and modeling. Thorough data cleaning and preparation further ensure the quality and reliability of our results.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
     
 </blockquote>
 {% endblock %}

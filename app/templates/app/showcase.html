@@ -1,6 +1,6 @@
 {% extends "app/base.html" %}
 
-{% block title %}Careers Page{% endblock %}
+{% block title %}Starting Out Page{% endblock %}
 
 {% block content %}
 <style>
@@ -32,7 +32,7 @@
         padding: 20px;
         font-size: 2rem;
         margin-top: 0vh;">
-        A simple JavaScript showcase. Using a Python randon generation function in view.py to change the colour of a box.
+        This page served as an initial test to validate the functionality of Cross-Site Request Forgery (CSRF) protection mechanisms and JavaScript integration. It features a straightforward implementation of a JavaScript and Python combination to create a random selection function that dynamically changes the color of a designated element.
         <br>
         <br>
         <p id="color-display">Color will appear here</p>
@@ -43,6 +43,8 @@
         </h3>
     </div>
 </div>
+<br>
+<br>
 <div class="box" id="color-box2"></div>
 
 
@@ -50,14 +52,14 @@
     function rgbToColorName(rgb) {
         // Define a mapping of common RGB values to color names
         var colorNames = {
-            'rgb(255, 0, 0)': 'Red',
-            'rgb(0, 255, 0)': 'Green',
-            'rgb(0, 0, 255)': 'Blue',
-            'rgb(211, 211, 211)': 'Light Gray',
-            'rgb(128, 0, 128)': 'Purple',
-            'rgb(0, 128, 0)': 'Green',
-            'rgb(255, 255, 0)': 'Yellow',
-            'rgb(255, 165, 0)': 'Orange',
+            'rgb(255, 0, 0)': 'red',
+            'rgb(0, 255, 0)': 'green',
+            'rgb(0, 0, 255)': 'blue',
+            'rgb(211, 211, 211)': 'light gray',
+            'rgb(128, 0, 128)': 'purple',
+            'rgb(0, 128, 0)': 'green',
+            'rgb(255, 255, 0)': 'yellow',
+            'rgb(255, 165, 0)': 'orange',
             // Add more color mappings as needed
         };
     
