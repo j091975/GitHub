@@ -1,6 +1,6 @@
 {% extends "app/base.html" %}
 
-{% block title %}California Housing Dataset{% endblock %}
+{% block title %}Data Cleansing/Analysis{% endblock %}
 
 {% block content %}
 <style>
@@ -90,25 +90,31 @@
           text-align: left;
         }
       }
+      pre {
+        background-color: #f4f4f4;
+        border: 1px solid #ddd;
+        padding: 10px;
+        overflow-x: auto;
+    }
+    h2 {
+      text-align: left;
+      color: black;
+      padding: 20px;
+      left-padding: 15px;
+    }
+    p {
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;
+  }
 </style>
 
 <div class="home">
     <div>
-        <div><div 
-            class="Topper-module--header--1dmbr"> <p style="
-        text-align: left;
-        font-family: 'Roboto', serif;
-        font-size: 2rem;
-        color: black;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-        padding: 20px;
-        font-size: 2rem;
-        left-padding: 15px;">
-        <p>The following data is sourced from the <code>sklearn.datasets</code> module, specifically the <code>california_housing</code> dataset.<br>
-             A dataframe displaying the first 25 rows is shown below.</p>
-            </div>
-        </div>
         
+      <h2>The Art and Science of Data Cleansing</h2>       
 
         <br>
         <br>
@@ -121,55 +127,423 @@
     
     </div>
     <div class="container">
+
+ 
+      <p>Welcome to the fascinating world of Data Cleansing, a critical process that forms the backbone of effective data management and analytics. In an era where data is hailed as the new oil, its purity and accuracy are paramount. Data Cleansing, often seen as the unsung hero in the data pipeline, involves meticulously correcting or removing corrupt, inaccurate, or irrelevant records from a dataset.</p>
+
+      <p style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">As data is collected from various sources, it often comes with a fair share of inconsistencies and errors—be it typos, missing values, or duplicate entries. Without proper cleansing, these imperfections can lead to misleading insights, poor decision-making, and ultimately, flawed strategies.</p>
+        
+      <p style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">In this section, we delve into the importance of Data Cleansing and explore the techniques and best practices that transform raw data into high-quality, reliable information. Whether you are a data scientist, analyst, or enthusiast, understanding and mastering Data Cleansing is essential to harness the true power of data.</p>
+        
+      
+<br>
+      <h2 style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      left-padding: 15px;">The Importance of Data Cleansing</h2>
+
+      <li style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">Accuracy: Ensuring that the data accurately reflects real-world situations or records, which is essential for making correct decisions.</li>
+  
+      <li style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">Consistency: Standardizing data formats and values so that data from different sources can be integrated and compared.
+
+      <li style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">Reliability: Building trust in the data so stakeholders can confidently use it for analysis and decision-making.
+
+      <li style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">Efficiency: Reducing the time and resources spent dealing with errors and inconsistencies in the data.
+
+      <li style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">Compliance: Meeting legal and regulatory requirements regarding data quality and integrity.
+      <br>
+      <br>
+      <h2 style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      left-padding: 15px;">Techniques for Data Cleansing</h2>
+      
+      <li style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">Data Profiling: Analyzing the data to understand its structure, content, and quality. This involves summarizing the data, identifying anomalies, and assessing data quality.</li>
+
+      <li style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">Standardization: Converting data into a common format or structure, such as consistent date formats or standardized address formats.</li>
+
+      <li style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">Deduplication: Identifying and removing duplicate records that may result from multiple data sources or erroneous entries.</li>
+
+      <li style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">Validation: Ensuring that data meets certain criteria or constraints, such as valid email formats or acceptable value ranges.</li>
+
+      <li style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">Imputation: Filling in missing data using techniques such as mean imputation, regression imputation, or using default values.</li>
+
+      <li style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">Outlier Detection: Identifying and managing outliers that may skew analysis, either by correcting, removing, or investigating them further.</li>
+
+      <li style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">Data Enrichment: Adding additional information from external sources to enhance the data’s value and context.</li>
+      <br>
+      <h2 style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      left-padding: 15px;">Best Practices for Data Cleansing</h2>
+
+      <li style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">Automate Where Possible: Utilize data cleansing tools and software to automate repetitive tasks and reduce human error.</li>
+
+      <li style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">Implement Data Governance: Establish clear policies and procedures for data management and quality assurance.</li>
+
+      <li style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">Regularly Audit Data: Conduct regular data quality audits to ensure ongoing accuracy and reliability.</li>
+
+      <li style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">Collaborate Across Teams: Engage different departments and stakeholders in the data cleansing process to ensure comprehensive coverage and understanding.</li>
+
+      <li style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">Document Processes: Maintain detailed documentation of data cleansing procedures and decisions to provide transparency and facilitate future maintenance.</li>
+
+      <li style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">Train Staff: Ensure that team members are trained in data quality principles and techniques to maintain high standards.</li>
+
+      <li style="
+      text-align: left;
+      color: black;
+      padding: 20px;
+      font-size: 2rem;
+      left-padding: 15px;">Measure and Monitor: Set data quality metrics and continuously monitor them to track improvements and identify areas needing attention.</li>
+
+        <p style="
+          text-align: left;
+          color: black;
+          padding: 20px;
+          font-size: 2rem;
+          left-padding: 15px;">
+      The following data is sourced from the <code>sklearn.datasets</code> module, specifically the <code>california_housing</code> dataset.<br>
+           A dataframe displaying the first 25 rows is shown below.</p>
+          </div>
+      </div>
+   <br>
     <br>
-    <br>
+    
+    <h2>Data Cleansing Techniques</h2>
+    <p>In this section, we delve into the importance of Data Cleansing and explore the techniques and best practices that transform raw data into high-quality, reliable information.</p>
+    
+    <h2>Handling Missing Values</h2>
+    <p>Missing values can distort your analysis. Here's how you can handle them using Python:</p>
+    <pre>
+      <code class="python"><p>
+import pandas as pd
+
+# Create a sample dataframe
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie', 'David', None],
+    'Age': [24, 27, 22, None, 28],
+    'City': ['New York', 'Los Angeles', None, 'Chicago', 'Houston']
+}
+df = pd.DataFrame(data)
+
+# Display the original dataframe
+print("Original DataFrame:")
+print(df)
+
+# Fill missing values with a specific value
+df_filled = df.fillna({'Name': 'Unknown', 'Age': df['Age'].mean(), 'City': 'Unknown'})
+print("\nDataFrame after filling missing values:")
+print(df_filled)
+
+# Drop rows with missing values
+df_dropped = df.dropna()
+print("\nDataFrame after dropping rows with missing values:")
+print(df_dropped)
+</p> </code></pre>
+    
+    <h2>Removing Duplicates</h2>
+    <p>Duplicate records can skew your results. Here's how to remove them:</p>
+    <pre><code class="python"><p>
+# Create a sample dataframe with duplicate records
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie', 'Alice'],
+    'Age': [24, 27, 22, 24],
+    'City': ['New York', 'Los Angeles', 'Chicago', 'New York']
+}
+df = pd.DataFrame(data)
+
+# Display the original dataframe
+print("Original DataFrame:")
+print(df)
+
+# Remove duplicate rows
+df_no_duplicates = df.drop_duplicates()
+print("\nDataFrame after removing duplicates:")
+print(df_no_duplicates)
+</p>    </code></pre>
+    
+    <h2>Normalizing Data</h2>
+    <p>Normalization helps to standardize the range of independent variables. Here's an example:</p>
+    <pre><code class="python"><p>
+from sklearn.preprocessing import MinMaxScaler
+import numpy as np
+
+# Create a sample dataframe
+data = {
+    'Feature1': [10, 20, 30, 40, 50],
+    'Feature2': [100, 200, 300, 400, 500]
+}
+df = pd.DataFrame(data)
+
+# Display the original dataframe
+print("Original DataFrame:")
+print(df)
+
+# Normalize the data
+scaler = MinMaxScaler()
+df_normalized = pd.DataFrame(scaler.fit_transform(df), columns=df.columns)
+print("\nDataFrame after normalization:")
+print(df_normalized)
+</p>    </code></pre>
+
+    <h2>Detecting and Removing Outliers</h2>
+    <p>Outliers can affect the performance of models. Here's how to detect and remove them:</p>
+    <pre><code class="python"><p>
+import numpy as np
+
+# Create a sample dataframe with an outlier
+data = {
+    'Feature1': [10, 20, 30, 40, 1000],  # 1000 is an outlier
+    'Feature2': [100, 200, 300, 400, 500]
+}
+df = pd.DataFrame(data)
+
+# Display the original dataframe
+print("Original DataFrame:")
+print(df)
+
+# Detect and remove outliers
+Q1 = df.quantile(0.25)
+Q3 = df.quantile(0.75)
+IQR = Q3 - Q1
+df_no_outliers = df[~((df < (Q1 - 1.5 * IQR)) |(df > (Q3 + 1.5 * IQR))).any(axis=1)]
+print("\nDataFrame after removing outliers:")
+print(df_no_outliers
+</p>    </code></pre>
+
+
+      <br>
+
+
        <div class="table">
         <h2 class="text-center" style="margin-left: 15%;">California Housing DataFrame Display</h2>
+        <p>In this section, I dive into advanced data analysis techniques. Exploring the correlation matrix to understand relationships between variables,
+           analyze the distribution of median house values to gain insights into the housing market, and implement a Random Forest model to predict outcomes 
+           with high accuracy.
+           Through these practical examples, we'll learn how to apply powerful tools and methods to extract meaningful information from data.
+        </p>
         <div style="ont-size: 2.5rem;">
             {{ cal_housing|safe }}
         </div>
     
+        <h2>Understanding the Correlation Matrix</h2>
+        <p>The correlation matrix helps identify the strength and direction of relationships between variables:</p>
+        <pre><code class="python"><p>
+    import pandas as pd
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+    
+    # Sample data
+    data = {
+        'Feature1': [1, 2, 3, 4, 5],
+        'Feature2': [5, 4, 3, 2, 1],
+        'Feature3': [2, 3, 4, 5, 6]
+    }
+    df = pd.DataFrame(data)
+    
+    # Calculate the correlation matrix
+    corr_matrix = df.corr()
+    print("Correlation Matrix:")
+    print(corr_matrix)
+    
+    # Plot the correlation matrix
+    sns.heatmap(corr_matrix, annot=True, cmap='coolwarm')
+    plt.title('Correlation Matrix')
+    plt.show()
+  </p>        </code></pre>
+        
     
     <br>
     <br>
     <div class="container plot-container">
 
 
-        <h3 class="text-center" style="margin-left: 15%;">Understanding the Correlation Matrix</h3>
-        <h4 class="text-center" style="margin-left: 15%;">A correlation matrix is a table displaying the correlation coefficients between multiple variables.<br>
-            Each cell in the matrix shows the correlation between two variables, with values ranging from -1 to 1. <br>
-            These coefficients help identify which variables move together, aiding in feature selection and analysis.</h4>
+        
+        <p>The following is a correlation matrix table based on the California Housing Data displaying the correlation coefficients between multiple variables.
+            Each cell in the matrix shows the correlation between two variables, with values ranging from -1 to 1.
+            These coefficients help identify which variables move together, aiding in feature selection and analysis.</p>
             <br>
-        <img style="height: 450px; width: 450px; margin-left: 15%;" src="{{ Correlation_Matrix_url }}" alt="Correlation Matrix">
+        <img style="height: 450px; width: 450px; margin-left: 5%;" src="{{ Correlation_Matrix_url }}" alt="Correlation Matrix">
         <br>
         <br>
-        <h3 class="text-center" style="margin-left: 15%;">Distribution of Median House Value</h3>
-        <h4 class="text-center" style="margin-left: 15%;">Distribution of Median House Value graph serves as a fundamental tool for understanding the 
-            <br>structure and characteristics of median house prices within a dataset, offering insights that are crucial for analysis,<br>
-             planning, and decision-making in various domains, especially in real estate and economic studies.<h4>
+        <h2>Distribution of Median House Values</h2>
+        <p>Understanding the distribution of median house values provides insights into the housing market:</p>
+        <pre><code class="python"><p>
+    import numpy as np
+    import matplotlib.pyplot as plt
+    
+    # Sample data
+    median_house_values = np.random.normal(200000, 50000, 1000)
+    
+    # Plot the distribution
+    plt.hist(median_house_values, bins=30, edgecolor='black')
+    plt.title('Distribution of Median House Values')
+    plt.xlabel('House Value')
+    plt.ylabel('Frequency')
+    plt.show()
+        </p>        </code></pre>
+        
+
+        
+        <p>Distribution of Median House Value graph serves as a fundamental tool for understanding the 
+            structure and characteristics of median house prices within a dataset, offering insights that are crucial for analysis,
+             planning, and decision-making in various domains, especially in real estate and economic studies.<p>
         <br>
-        <img style="height: 450px; width: 450px; margin-left: 15%;" src="{{ Distribution_of_Median_House_Value_url }}" alt="Distribution of Median House Value">
+        <img style="height: 450px; width: 450px; margin-left: 5%;" src="{{ Distribution_of_Median_House_Value_url }}" alt="Distribution of Median House Value">
         <br>
         <br>
 
-        <h3 class="text-center" style="margin-left: 15%;">Feature Importance from Random Forest</h3>
-        <h4 class="text-center" style="margin-left: 15%;">Feature importance scores from a Random Forest model indicate the relative importance of each feature<br>
-             in making predictions. These scores help in understanding which features contribute the most to the predictive power of the model, <br>
-             guiding us in feature selection and engineering.</h4>
+        <h2>Random Forest Implementation</h2>
+        <p>Random Forest is a powerful ensemble learning method for classification and regression tasks:</p>
+        <pre><code class="python"><p>
+    from sklearn.ensemble import RandomForestRegressor
+    from sklearn.model_selection import train_test_split
+    from sklearn.metrics import mean_squared_error
+    
+    # Sample data
+    data = {
+        'Feature1': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        'Feature2': [5, 4, 3, 2, 1, 5, 4, 3, 2, 1],
+        'MedianHouseValue': [100, 150, 200, 250, 300, 350, 400, 450, 500, 550]
+    }
+    df = pd.DataFrame(data)
+    
+    # Features and target variable
+    X = df[['Feature1', 'Feature2']]
+    y = df['MedianHouseValue']
+    
+    # Split the data
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    
+    # Initialize and train the model
+    model = RandomForestRegressor(n_estimators=100, random_state=42)
+    model.fit(X_train, y_train)
+    
+    # Make predictions
+    predictions = model.predict(X_test)
+    
+    # Evaluate the model
+    mse = mean_squared_error(y_test, predictions)
+    print(f'Mean Squared Error: {mse}')
+  </p></code></pre>
+        
+        <p>Feature importance scores from a Random Forest model indicate the relative importance of each feature
+             in making predictions. These scores help in understanding which features contribute the most to the predictive power of the model,
+             guiding us in feature selection and engineering.</p>
              <br>
-             <img style="height: 450px; width: 450px; margin-left: 15%;" src="{{ Feature_Importance_from_Random_Forest_url }}" alt="Feature Importance Plot">
+             <img style="height: 450px; width: 450px; margin-left: 5%;" src="{{ Feature_Importance_from_Random_Forest_url }}" alt="Feature Importance Plot">
         <br>
         <br>
     </div>
-    </div>
-    </div>
-
 
 
 {% endblock %}
 
 {% block content3 %}
-<h2>Python and data cleaning: because sometimes even numbers need a good scrubbing.</h2>
+<h2 style="color: white">Python and data cleaning: because sometimes even numbers need a good scrubbing.</h2>
 {% endblock %}
 
 {% block quotes %}
