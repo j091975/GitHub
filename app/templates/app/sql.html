@@ -1,0 +1,226 @@
+{% extends "app/base.html" %}
+
+{% block title %}SQL Page{% endblock %}
+
+{% block content %}
+<style>
+    .home {
+        width: 100%;
+        height: 15vh;
+        background-position: center top;
+        background-size: cover;
+        font-size: 2.5rem;
+        background-attachment: fixed; /* This ensures the background is fixed */
+    }
+    table {
+        width: 50%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 16px;
+        font-family: 'Arial, sans-serif';
+        box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        margin-left: 15%; /* Move the table 15% to the right */
+      }
+      
+      /* Table Header Styling */
+      table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+        font-weight: bold;
+      }
+      
+      table thead th, table tbody td {
+        padding: 12px 15px;
+      }
+      
+      /* Table Body Styling */
+      table tbody tr {
+        border-bottom: 1px solid #dddddd;
+      }
+      
+      /* Alternating Row Colors */
+      table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+      }
+      
+      /* Hover Effects */
+      table tbody tr:hover {
+        background-color: #f1f1f1;
+      }
+      
+      /* Active Row Styling */
+      table tbody tr:active {
+        background-color: #d1d1d1;
+      }
+      
+      /* Responsive Table */
+      @media (max-width: 768px) {
+        table, thead, tbody, th, td, tr {
+          display: block;
+        }
+      
+        table thead {
+          display: none;
+        }
+      
+        table tbody tr {
+          margin-bottom: 15px;
+        }
+      
+        table tbody tr td {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px;
+          border: none;
+          border-bottom: 1px solid #dddddd;
+          position: relative;
+          padding-left: 50%;
+          text-align: right;
+        }
+      
+        table tbody tr td::before {
+          content: attr(data-label);
+          position: absolute;
+          left: 0;
+          width: 45%;
+          padding-left: 15px;
+          font-weight: bold;
+          text-align: left;
+        }
+      }
+</style>
+
+<div class="home">
+    <div>
+        <div><div 
+            class="Topper-module--header--1dmbr"> <p style="
+        text-align: left;
+        font-family: 'Roboto', serif;
+        font-size: 2rem;
+        color: black;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        font-size: 2rem;
+        left-padding: 15px;">
+        <h1>Interactive SQL Demo</h1>
+        <br>
+        <br>
+    
+            </div>
+        </div>
+        <p style="margin-left: 75px;">Use SQL fiddle below to run sample queries against demo database. PostgreSQL Example below.</p>    
+
+        <br>
+        <br>
+    </p>
+    </div>
+    <br>
+    <div>
+    </div>
+    </section>
+    
+    </div>
+    <div class="container">
+    <br>
+    <br>
+    
+    
+    <!-- Replace with your SQL Fiddle embed code -->
+    <iframe width="100%" height="800" src="https://www.sqlfiddle.com"></iframe>
+    
+    <h3>Feel free to explore different queries and see the results!</h3>
+        <br>
+        <br>
+    </div>
+    </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block content3 %}
+<h2>Even in theology, they say, 'Hands-on revelation beats theoretical contemplation!'</h2>
+{% endblock %}
+
+{% block quotes %}
+<blockquote class="blockquote">
+    <div class="Section-module--section--35E8i" style="font-size: 1.7rem;">
+        <div class="Section-module--sectionInner--3B0PK">
+
+            <ul class="Values-module--values--2V9nS">
+                <li class="Values-module--value--3BOh-">
+                    <h5 class="Values-module--value__title--3Q1YK">Table</h5>
+                    <div class="Values-module--value__desc--2fzuZ">
+                        <pre>CREATE TABLE employee (
+                    id SERIAL PRIMARY KEY,
+                    name VARCHAR(100) NOT NULL,
+                    manager_id INT,
+                    department VARCHAR(100),
+                    parent_id INT
+                        );</pre>
+                    </div>
+                </li>
+                <li class="Values-module--value--3BOh-"><h5 class="Values-module--value__title--3Q1YK">Records</h5>
+                    <div class="Values-module--value__desc--2fzuZ">
+                        <pre>INSERT INTO employee (name, manager_id, department, parent_id)
+                            VALUES
+                            ('John Doe', NULL, 'HR', NULL),
+                            ('Jane Smith', 1, 'HR', 1),
+                            ('Michael Johnson', 1, 'Finance', NULL),
+                            ('Emily Davis', 3, 'Finance', 3),
+                            ('Robert Brown', 1, 'IT', NULL),
+                            ('Susan Lee', 5, 'IT', 5),
+                            ('David Miller', 5, 'IT', 5),
+                            ('Karen Wilson', 1, 'Marketing', NULL),
+                            ('Steven Garcia', 8, 'Marketing', 8),
+                            ('Laura Martinez', 8, 'Marketing', 8),
+                            ('Christopher Clark', 1, 'Sales', NULL),
+                            ('Sarah Thompson', 11, 'Sales', 11),
+                            ('Mark Hall', 11, 'Sales', 11),
+                            ('Michelle Young', 11, 'Sales', 11),
+                            ('Daniel King', 1, 'Operations', NULL),
+                            ('Lisa Hernandez', 14, 'Operations', 14),
+                            ('Kevin Nguyen', 14, 'Operations', 14),
+                            ('Amanda Adams', 1, 'Support', NULL),
+                            ('James Robinson', 17, 'Support', 17),
+                            ('Melissa Scott', 17, 'Support', 17),
+                            ('Ryan Walker', 17, 'Support', 17);</pre>
+                    </div>
+                </li>
+                <li class="Values-module--value--3BOh-"><h5 class="Values-module--value__title--3Q1YK"></h5>
+                    <div class="Values-module--value__desc--2fzuZ">                        
+                    </div>
+                </li>
+                <li class="Values-module--value--3BOh-"><h5 class="Values-module--value__title--3Q1YK">Select</h5>
+                    <div class="Values-module--value__desc--2fzuZ">
+                        <pre>WITH RECURSIVE recursive_cte AS (
+                            -- Anchor member (initial query)
+                            SELECT id, parent_id, name, 1 AS level
+                            FROM employee
+                            WHERE parent_id IS NULL  -- Root nodes condition
+                            
+                            UNION ALL
+                            
+                            -- Recursive member (subsequent queries)
+                            SELECT t.id, t.parent_id, t.name, rc.level + 1
+                            FROM employee t
+                            JOIN recursive_cte rc ON t.parent_id = rc.id
+                        )
+                        SELECT id, parent_id, name, level
+                        FROM recursive_cte;</pre>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>    
+</blockquote>
+{% endblock %}
+
+
+
+
+
+

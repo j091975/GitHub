@@ -1,0 +1,327 @@
+{% extends "app/base.html" %}
+
+{% block title %}Warehouse Data Display{% endblock %}
+
+{% block content %}
+<style>
+    .home {
+        width: 100%;
+        height: 15vh;
+        background-position: center top;
+        background-size: cover;
+        font-size: 2.5rem;
+        background-attachment: fixed; /* This ensures the background is fixed */
+    }
+    table {
+        width: 50%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 16px;
+        font-family: 'Arial, sans-serif';
+        box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        margin-left: 15%; /* Move the table 15% to the right */
+      }
+      
+      /* Table Header Styling */
+      table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+        font-weight: bold;
+      }
+      
+      table thead th, table tbody td {
+        padding: 12px 15px;
+      }
+      
+      /* Table Body Styling */
+      table tbody tr {
+        border-bottom: 1px solid #dddddd;
+      }
+      
+      /* Alternating Row Colors */
+      table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+      }
+      
+      /* Hover Effects */
+      table tbody tr:hover {
+        background-color: #f1f1f1;
+      }
+      
+      /* Active Row Styling */
+      table tbody tr:active {
+        background-color: #d1d1d1;
+      }
+      
+      /* Responsive Table */
+      @media (max-width: 768px) {
+        table, thead, tbody, th, td, tr {
+          display: block;
+        }
+      
+        table thead {
+          display: none;
+        }
+      
+        table tbody tr {
+          margin-bottom: 15px;
+        }
+      
+        table tbody tr td {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px;
+          border: none;
+          border-bottom: 1px solid #dddddd;
+          position: relative;
+          padding-left: 50%;
+          text-align: right;
+        }
+      
+        table tbody tr td::before {
+          content: attr(data-label);
+          position: absolute;
+          left: 0;
+          width: 45%;
+          padding-left: 15px;
+          font-weight: bold;
+          text-align: left;
+        }
+      }
+</style>
+
+<div class="home">
+    <div>
+        <div>
+            <div 
+            class="Topper-module--header--1dmbr"> <p style="
+        text-align: left;
+        font-family: 'Roboto', serif;
+        font-size: 2rem;
+        color: black;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        font-size: 2rem;
+        left-padding: 15px;">
+        <h1>Example Data Warehouse Display</h1>
+        <br>
+        <br>
+        <br>
+        <p>Welcome to the data display page. Below, you will find several tables showcasing various datasets, including suppliers, warehouse products, customers, orders, and order details. All the data presented here has been generated using random text and date functions for demonstration purposes. Each table represents a different aspect of my mock database:</p>
+        <ul>
+            <li><strong>Suppliers:</strong> Information about suppliers including their contact details and addresses.</li>
+            <li><strong>Warehouse Products:</strong> Details of products stored in the warehouse, their categories, quantities, and prices.</li>
+            <li><strong>Customers:</strong> Customer data, including their names, contact information, and addresses.</li>
+            <li><strong>Orders:</strong> Order records, including customer details, order dates, shipping information, and freight costs.</li>
+            <li><strong>Order Details:</strong> Specific details for each order, including the products ordered, quantities, unit prices, and any discounts applied.</li>
+        </ul>
+        <p>The data displayed here is purely fictitious and has been randomly generated to illustrate how such data might be presented on a real web application.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}
+
+{% block content3 %}
+<h2>Take the plunge into our ocean of mock data, where suppliers, products, and customers frolic in a sea of randomness – it's data diving with a splash of fun!</h2>
+{% endblock %}
+
+{% block quotes %}
+<blockquote class="blockquote">
+    <div class="Section-module--section--35E8i" style="font-size: 1.7rem;">
+        <div class="Section-module--sectionInner--3B0PK">
+            <h1>Suppliers</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Supplier ID</th>
+                        <th>Name</th>
+                        <th>Contact Name</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>Postal Code</th>
+                        <th>Country</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for supplier in suppliers %}
+                    <tr>
+                        <td>{{ supplier.supplier_id }}</td>
+                        <td>{{ supplier.supplier_name }}</td>
+                        <td>{{ supplier.contact_name }}</td>
+                        <td>{{ supplier.phone }}</td>
+                        <td>{{ supplier.address }}</td>
+                        <td>{{ supplier.city }}</td>
+                        <td>{{ supplier.postal_code }}</td>
+                        <td>{{ supplier.country }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        
+            <h1>Warehouse Products</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Supplier</th>
+                        <th>Category</th>
+                        <th>Quantity Per Unit</th>
+                        <th>Unit Price</th>
+                        <th>Units In Stock</th>
+                        <th>Units On Order</th>
+                        <th>Reorder Level</th>
+                        <th>Discontinued</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td>{{ product.product_id }}</td>
+                        <td>{{ product.product_name }}</td>
+                        <td>{{ product.supplier.supplier_name }}</td>
+                        <td>{{ product.category }}</td>
+                        <td>{{ product.quantity_per_unit }}</td>
+                        <td>{{ product.unit_price }}</td>
+                        <td>{{ product.units_in_stock }}</td>
+                        <td>{{ product.units_on_order }}</td>
+                        <td>{{ product.reorder_level }}</td>
+                        <td>{{ product.discontinued }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        
+            <h1>Customers</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Name</th>
+                        <th>Contact Name</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>Postal Code</th>
+                        <th>Country</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for customer in customers %}
+                    <tr>
+                        <td>{{ customer.customer_id }}</td>
+                        <td>{{ customer.customer_name }}</td>
+                        <td>{{ customer.contact_name }}</td>
+                        <td>{{ customer.phone }}</td>
+                        <td>{{ customer.address }}</td>
+                        <td>{{ customer.city }}</td>
+                        <td>{{ customer.postal_code }}</td>
+                        <td>{{ customer.country }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        
+            <h1>Orders</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Order Date</th>
+                        <th>Required Date</th>
+                        <th>Shipped Date</th>
+                        <th>Ship Via</th>
+                        <th>Freight</th>
+                        <th>Ship Name</th>
+                        <th>Ship Address</th>
+                        <th>Ship City</th>
+                        <th>Ship Postal Code</th>
+                        <th>Ship Country</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td>{{ order.order_id }}</td>
+                        <td>{{ order.customer.customer_name }}</td>
+                        <td>{{ order.order_date }}</td>
+                        <td>{{ order.required_date }}</td>
+                        <td>{{ order.shipped_date }}</td>
+                        <td>{{ order.ship_via }}</td>
+                        <td>{{ order.freight }}</td>
+                        <td>{{ order.ship_name }}</td>
+                        <td>{{ order.ship_address }}</td>
+                        <td>{{ order.ship_city }}</td>
+                        <td>{{ order.ship_postal_code }}</td>
+                        <td>{{ order.ship_country }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        
+            <h1>Order Details</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order Detail ID</th>
+                        <th>Order</th>
+                        <th>Product</th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th>Discount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for detail in order_details %}
+                    <tr>
+                        <td>{{ detail.order_detail_id }}</td>
+                        <td>{{ detail.order.order_id }}</td>
+                        <td>{{ detail.product.product_name }}</td>
+                        <td>{{ detail.unit_price }}</td>
+                        <td>{{ detail.quantity }}</td>
+                        <td>{{ detail.discount }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>    
+</blockquote>
+{% endblock %}
+
+
+
+
+
+

@@ -395,6 +395,58 @@
             }
         }
         {% block custom_background %}{% endblock %}
+        /* Dropdown Toggle */
+        @import url("https://fonts.googleapis.com/css?family=Quicksand:400,500,700");
+
+        .dropbtn {
+            /*background-color: #04AA6D; /* Opaque background */
+            color: white; /* White text */
+            padding: 17px;
+            font-size: 10px; /* Adjusted font size */
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            font-size: 2.4rem;
+            font-family: "Quicksand", sans-serif;
+            background-color: rgba(0, 0, 0, 0);
+            padding-left: 1px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+            font-family: "Quicksand", sans-serif;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            color: green; /* Text turns green on hover */
+        }
     </style>
 </head>
 <body>
@@ -433,11 +485,30 @@
             </div>
             <div id="mainListDiv" class="main_list">
                 <ul class="navlinks">
+                    
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="/about">About</a></li>
-                    <li><a href="/data_page">data-page</a></li>
-                    <li><a href="/generate_product">Generate Product(s)</a></li>
+                    <div class="dropdown">
+                    
+                        <button class="dropbtn">Python</button>
+                        <div class="dropdown-content">
+                            <a href="/data_page">California Housing Dataset</a>
+                        </div>
+                      </div>
+                    <div class="dropdown">
+                    
+                        <button class="dropbtn">sql</button>
+                        <div class="dropdown-content">
+                            <a href="/sql2">Warehouse Example</a>
+                            <a href="/sql">SQLFiddle</a>
+                            <a href="/generate_product">Generate Product(s)</a>
+                        </div>
+                      </div>
+                    
                     <li><a href="/showcase">Box</a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    
                 </ul>
             </div>
             <span class="navTrigger">
@@ -447,6 +518,7 @@
             </span>
         </div>
     </nav>
+
 
     <section class="home">
     </section>
@@ -553,6 +625,11 @@
             <span class="text-muted">© 2024</span>
         </div>
     </footer>
+
+ <!-- Bootstrap JS, Popper.js, and jQuery -->
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <!-- Jquery needed -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
