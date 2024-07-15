@@ -12,4 +12,6 @@ urlpatterns = [
     path('base/', views.base, name='base'),
     path('careers/', views.careers, name='careers'),
     path('data_page/', views.data_page, name='data_page'),
+    path('sql/', views.sql, name='sql'),
+    path('sql2/', views.sql2, name='sql2'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

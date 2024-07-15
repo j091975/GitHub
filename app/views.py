@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.utils.translation import gettext as _
 from django.http import HttpResponse
 from django.db import connection
-from .models import product, SoccerPlayer, Slide
+from .models import product, SoccerPlayer, Slide, Supplier, Order, OrderDetail, Customer, Warehouse_Products
 from .forms import ProductForm  # Assuming you have a form for the Product
 import random
 import string
@@ -16,20 +16,20 @@ from django.views import View
 #from sklearn.datasets import load_iris
 #from sklearn.datasets import make_moons
 from sklearn.datasets import fetch_california_housing
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from django.conf import settings
-import seaborn as sns
+#import seaborn as sns
 
 # Step 3: Data Preprocessing
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
+#from sklearn.model_selection import train_test_split
+#from sklearn.preprocessing import StandardScaler
 # Step 4: Model Training and Evaluation
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
+#from sklearn.linear_model import LinearRegression
+#from sklearn.metrics import mean_squared_error, r2_score
 # Step 5: Model Interpretation and Insights
-import numpy as np
+#import numpy as np
 # Step 6: Further Model Tuning (Optional)
-from sklearn.ensemble import RandomForestRegressor
+#from sklearn.ensemble import RandomForestRegressor
 
 def generate_random_location():
     # Randomly choose one of 'AND', 'BAS', 'SAL'
@@ -273,5 +273,80 @@ def data_page(request):
         #'featureimportance_txt' : featureimportance,
     }
     return render(request, 'app/data_page.html', context)
+
+def sql(request):
+    return render(request, 'app/sql.html')
+
+def sql2(request):
+    # Fetch all records ordered by supplier_id
+    all_records = Supplier.objects.all().order_by('supplier_id')
+
+    # Check if there are more than 20 records
+    if all_records.count() > 20:
+        # Get the ids of the records to delete
+        ids_to_delete = all_records.values_list('supplier_id', flat=True)[20:]
+
+        # Delete the records
+        Supplier.objects.filter(supplier_id__in=ids_to_delete).delete()
+
+    #    return JsonResponse({'status': 'success', 'message': f'Successfully deleted {len(ids_to_delete)} records'})
+    #else:
+    #    return JsonResponse({'status': 'success', 'message': 'There are less than or exactly 20 records. No records deleted.'})
+    
+    # Fetch all records ordered by supplier_id
+    all_records = Customer.objects.all().order_by('customer_id')
+
+    # Check if there are more than 20 records
+    if all_records.count() > 20:
+        # Get the ids of the records to delete
+        ids_to_delete = all_records.values_list('customer_id', flat=True)[20:]
+
+        # Delete the records
+        Customer.objects.filter(customer_id__in=ids_to_delete).delete()
+        
+    all_records = Order.objects.all().order_by('order_id')
+
+    # Check if there are more than 20 records
+    if all_records.count() > 20:
+        # Get the ids of the records to delete
+        ids_to_delete = all_records.values_list('order_id', flat=True)[20:]
+
+        # Delete the records
+        Order.objects.filter(order_id__in=ids_to_delete).delete()
+        
+    all_records = Warehouse_Products.objects.all().order_by('product_id')
+
+    # Check if there are more than 20 records
+    if all_records.count() > 20:
+        # Get the ids of the records to delete
+        ids_to_delete = all_records.values_list('product_id', flat=True)[20:]
+
+        # Delete the records
+        Warehouse_Products.objects.filter(product_id__in=ids_to_delete).delete()
+        
+    all_records = OrderDetail.objects.all().order_by('order_detail_id')
+
+    # Check if there are more than 20 records
+    if all_records.count() > 20:
+        # Get the ids of the records to delete
+        ids_to_delete = all_records.values_list('order_detail_id', flat=True)[20:]
+
+        # Delete the records
+        OrderDetail.objects.filter(order_detail_id__in=ids_to_delete).delete()
+
+    suppliers = Supplier.objects.all()
+    products = Warehouse_Products.objects.all()
+    customers = Customer.objects.all()
+    orders = Order.objects.all()
+    order_details = OrderDetail.objects.all()
+
+    context = {
+        'suppliers': suppliers,
+        'products': products,
+        'customers': customers,
+        'orders': orders,
+        'order_details': order_details,
+    }
+    return render(request, 'app/sql2.html', context)
 
 #/Users/jasonlankshear/Documents/Docker/GitHub/my_azure_app_service/static/Correlation_Matrix.png
