@@ -1,115 +1,250 @@
-{% extends "app/base.html" %}
-
-{% block title %}Warehouse Data Display{% endblock %}
-
-{% block content %}
-<style>
-    .home {
-        width: 100%;
-        height: 15vh;
-        background-position: center top;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Warehouse Data Display | Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"><link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    body {
+      background-color: #d0ccc4;
         background-size: cover;
-        font-size: 2.5rem;
-        background-attachment: fixed; /* This ensures the background is fixed */
-    }
-    table {
-        width: 50%;
-        border-collapse: collapse;
-        margin: 20px 0;
-        font-size: 16px;
-        font-family: 'Arial, sans-serif';
-        box-shadow: 0 2px 3px rgba(0,0,0,0.1);
-        margin-left: 15%; /* Move the table 15% to the right */
-      }
-      
-      /* Table Header Styling */
-      table thead tr {
-        background-color: #009879;
-        color: #ffffff;
-        text-align: left;
-        font-weight: bold;
-      }
-      
-      table thead th, table tbody td {
-        padding: 12px 15px;
-      }
-      
-      /* Table Body Styling */
-      table tbody tr {
-        border-bottom: 1px solid #dddddd;
-      }
-      
-      /* Alternating Row Colors */
-      table tbody tr:nth-of-type(even) {
-        background-color: #f3f3f3;
-      }
-      
-      /* Hover Effects */
-      table tbody tr:hover {
-        background-color: #f1f1f1;
-      }
-      
-      /* Active Row Styling */
-      table tbody tr:active {
-        background-color: #d1d1d1;
-      }
-      
-      /* Responsive Table */
-      @media (max-width: 768px) {
-        table, thead, tbody, th, td, tr {
-          display: block;
-        }
-      
-        table thead {
-          display: none;
-        }
-      
-        table tbody tr {
-          margin-bottom: 15px;
-        }
-      
-        table tbody tr td {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 10px;
-          border: none;
-          border-bottom: 1px solid #dddddd;
-          position: relative;
-          padding-left: 50%;
-          text-align: right;
-        }
-      
-        table tbody tr td::before {
-          content: attr(data-label);
-          position: absolute;
-          left: 0;
-          width: 45%;
-          padding-left: 15px;
-          font-weight: bold;
-          text-align: left;
-        }
-      }
-</style>
-
-<div class="home">
-    <div>
-        <div>
-            <div 
-            class="Topper-module--header--1dmbr"> <p style="
         text-align: left;
         font-family: 'Roboto', serif;
-        font-size: 2rem;
+        font-size: 1.4rem;
         color: black;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-        padding: 20px;
-        font-size: 2rem;
-        left-padding: 15px;">
-        <h1>Example Data Warehouse Display</h1>
-        <br>
-        <br>
-        <br>
-        <p>Welcome to the data display page. Below, you will find several tables showcasing various datasets, including suppliers, warehouse products, customers, orders, and order details. All the data presented here has been generated using random text and date functions for demonstration purposes. Each table represents a different aspect of my mock database:</p>
+        }
+    nav {
+        font-family: 'Roboto', serif;
+        color: white;
+        font-size: 1.1rem;
+        }
+        .w3-button-transparent {
+            background-color: transparent;
+        }
+        .nav-link {
+            display: inline-block;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: inherit; /* inherit the color from the applied class */
+            border: 1px solid;
+            border-radius: 4px;
+            
+        }
+    /* Set a fixed height for the footer */
+    .footer {
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(21, 37, 54);
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+    }
+    .additional-section {
+        position: relative;
+        width: 100%;
+        padding-bottom: 2rem; /* Adjust padding to create space for the line */
+      }
+      .additional-section::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 7.5%;
+        width: 85%;
+        height: 1px; /* Adjust height for line thickness */
+        background-color: orange;
+      }
+      .bg-color-1 {
+        background-color: rgb(21, 37, 54);
+      }
+      .bg-color-2 {
+        background-color: #d0ccc4; /* Example color */
+      }
+      .bg-color-3 {
+        background-color: #5cb85c; /* Example color */
+      }
+      @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+    .fancy-text-1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem; /* Adjust size as needed */
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      margin: 20px 0;
+      white-space: normal; /* Ensure text wraps */
+      word-break: break-word; /* Break long words */
+    }
+    .fancy-text-2 {
+        font-family: 'Papyrus', fantasy;
+        font-size: 1.3rem; /* Adjust size as needed */
+        text-align: center;
+        margin: 20px 0;
+        white-space: normal; /* Ensure text wraps */
+        word-break: break-word; /* Break long words */
+    }
+      .fancy-text-3 {
+        font-family: 'Great Vibes', cursive;
+        font-size: 1.2rem; /* Adjust size as needed */
+        text-align: center;
+        margin: 20px 0;
+        white-space: normal; /* Ensure text wraps */
+        word-break: break-word; /* Break long words */
+    }
+    .ft-color-1 {
+        color: #d0ccc4; /* Customize color */
+    }
+    .ft-color-2 {
+        color: rgb(21, 37, 54); /* Customize color */
+    }
+    pre {
+      background-color: #f4f4f4;
+      border: 1px solid #ddd;
+      padding: 10px;
+      overflow-x: auto;
+  }
+  table {
+    width: 50%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    font-family: 'Arial, sans-serif';
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    margin-left: 0%; /* Move the table 15% to the right */
+  }
+  
+  /* Table Header Styling */
+  table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  table thead th, table tbody td {
+    padding: 12px 15px;
+  }
+  
+  /* Table Body Styling */
+  table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  /* Alternating Row Colors */
+  table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  /* Hover Effects */
+  table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Active Row Styling */
+  table tbody tr:active {
+    background-color: #d1d1d1;
+  }
+  
+  /* Responsive Table */
+  @media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+  
+    table thead {
+      display: none;
+    }
+  
+    table tbody tr {
+      margin-bottom: 15px;
+    }
+  
+    table tbody tr td {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border: none;
+      border-bottom: 1px solid #dddddd;
+      position: relative;
+      padding-left: 50%;
+      text-align: right;
+    }
+  
+    table tbody tr td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      width: 45%;
+      padding-left: 15px;
+      font-weight: bold;
+      text-align: left;
+    }
+  }
+  </style>
+</head>
+
+<nav>
+    <div class="container mt-3">
+        <ul class="nav">
+            <li>       
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 162.8 164.8" width="55" height="55" aria-hidden="true">
+            <title>Face Icon</title>
+    
+                <defs>
+                    <!-- Define a gradient for the face if needed -->
+                    <linearGradient id="faceGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%"/>
+                </linearGradient>
+                </defs>
+                <!-- Left eye -->
+                <circle cx="61" cy="63" r="5" fill="url(#faceGradient)" />
+    
+                <!-- Right eye -->
+                <circle cx="101" cy="63" r="5" fill="url(#faceGradient)" />
+    
+                <!-- Nose -->
+                <path d="M81.4 85.4 L77.4 93.4 L85.4 93.4 Z" fill="url(#faceGradient)" />
+    
+                <!-- Mouth -->
+                <path d="M71 110 Q 81 115, 91 110" fill="none" stroke="url(#faceGradient)" stroke-width="4" />
+    
+                <!-- Spiky hair strands -->
+                <path d="M70 40 Q 55 40, 65 35 Q 75 40" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
+                <path d="M70 40 Q 85 40, 95 35 Q 105 40" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
+                <path d="M70 40 Q 65 20, 75 15 Q 85 20" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
+                <path d="M70 40 Q 75 15, 85 10 Q 95 15" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
+            
+            </svg>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="/data_page">Data Cleansing</a>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="/sql2">Warehouse Example</a>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="/sql">SQLFiddle</a>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="/generate_product">Generate Product(s)</a>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="/showcase">Box</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container mt-5">
+  <div class="row">
+    <p>Welcome to the data display page. Below, you will find several tables showcasing various datasets, including suppliers, warehouse products, customers, orders, and order details. All the data presented here has been generated using random text and date functions for demonstration purposes. Each table represents a different aspect of my mock database:</p>
         <ul>
             <li><strong>Suppliers:</strong> Information about suppliers including their contact details and addresses.</li>
             <li><strong>Warehouse Products:</strong> Details of products stored in the warehouse, their categories, quantities, and prices.</li>
@@ -117,211 +252,262 @@
             <li><strong>Orders:</strong> Order records, including customer details, order dates, shipping information, and freight costs.</li>
             <li><strong>Order Details:</strong> Specific details for each order, including the products ordered, quantities, unit prices, and any discounts applied.</li>
         </ul>
+        <h1>Example Data Warehouse Display</h1>
+        <br>
+        <br>
+        <br>
+        
         <p>The data displayed here is purely fictitious and has been randomly generated to illustrate how such data might be presented on a real web application.</p>
-
+    <blockquote class="blockquote">
+        <div class="Section-module--section--35E8i" style="font-size: 1.7rem;">
+            <div class="Section-module--sectionInner--3B0PK">
+                <h1>Suppliers</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Supplier ID</th>
+                            <th>Name</th>
+                            <th>Contact Name</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>Postal Code</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for supplier in suppliers %}
+                        <tr>
+                            <td>{{ supplier.supplier_id }}</td>
+                            <td>{{ supplier.supplier_name }}</td>
+                            <td>{{ supplier.contact_name }}</td>
+                            <td>{{ supplier.phone }}</td>
+                            <td>{{ supplier.address }}</td>
+                            <td>{{ supplier.city }}</td>
+                            <td>{{ supplier.postal_code }}</td>
+                            <td>{{ supplier.country }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            
+                <h1>Warehouse Products</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>Supplier</th>
+                            <th>Category</th>
+                            <th>Quantity Per Unit</th>
+                            <th>Unit Price</th>
+                            <th>Units In Stock</th>
+                            <th>Units On Order</th>
+                            <th>Reorder Level</th>
+                            <th>Discontinued</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                        <tr>
+                            <td>{{ product.product_id }}</td>
+                            <td>{{ product.product_name }}</td>
+                            <td>{{ product.supplier.supplier_name }}</td>
+                            <td>{{ product.category }}</td>
+                            <td>{{ product.quantity_per_unit }}</td>
+                            <td>{{ product.unit_price }}</td>
+                            <td>{{ product.units_in_stock }}</td>
+                            <td>{{ product.units_on_order }}</td>
+                            <td>{{ product.reorder_level }}</td>
+                            <td>{{ product.discontinued }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            
+                <h1>Customers</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>Name</th>
+                            <th>Contact Name</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>Postal Code</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for customer in customers %}
+                        <tr>
+                            <td>{{ customer.customer_id }}</td>
+                            <td>{{ customer.customer_name }}</td>
+                            <td>{{ customer.contact_name }}</td>
+                            <td>{{ customer.phone }}</td>
+                            <td>{{ customer.address }}</td>
+                            <td>{{ customer.city }}</td>
+                            <td>{{ customer.postal_code }}</td>
+                            <td>{{ customer.country }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            
+                <h1>Orders</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Order Date</th>
+                            <th>Required Date</th>
+                            <th>Shipped Date</th>
+                            <th>Ship Via</th>
+                            <th>Freight</th>
+                            <th>Ship Name</th>
+                            <th>Ship Address</th>
+                            <th>Ship City</th>
+                            <th>Ship Postal Code</th>
+                            <th>Ship Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <td>{{ order.order_id }}</td>
+                            <td>{{ order.customer.customer_name }}</td>
+                            <td>{{ order.order_date }}</td>
+                            <td>{{ order.required_date }}</td>
+                            <td>{{ order.shipped_date }}</td>
+                            <td>{{ order.ship_via }}</td>
+                            <td>{{ order.freight }}</td>
+                            <td>{{ order.ship_name }}</td>
+                            <td>{{ order.ship_address }}</td>
+                            <td>{{ order.ship_city }}</td>
+                            <td>{{ order.ship_postal_code }}</td>
+                            <td>{{ order.ship_country }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            
+                <h1>Order Details</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order Detail ID</th>
+                            <th>Order</th>
+                            <th>Product</th>
+                            <th>Unit Price</th>
+                            <th>Quantity</th>
+                            <th>Discount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for detail in order_details %}
+                        <tr>
+                            <td>{{ detail.order_detail_id }}</td>
+                            <td>{{ detail.order.order_id }}</td>
+                            <td>{{ detail.product.product_name }}</td>
+                            <td>{{ detail.unit_price }}</td>
+                            <td>{{ detail.quantity }}</td>
+                            <td>{{ detail.discount }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+    
             </div>
+        </div>
+<br>
+<br>
+</div> 
+</div>
+</div>
+</div>
+
+<!-- Additional Section Above Footer -->
+<div class="additional-section py-5 text-white bg-color-1">
+    <div class="container">
+        <div class="col">
+        <h2 class="fancy-text-1 ft-color-1">Take the plunge into our ocean of mock data, where suppliers, products, and customers frolic in a sea of randomness – it's data diving with a splash of fun!</h2>
         </div>
     </div>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-{% endblock %}
-
-{% block content3 %}
-<h2>Take the plunge into our ocean of mock data, where suppliers, products, and customers frolic in a sea of randomness – it's data diving with a splash of fun!</h2>
-{% endblock %}
-
-{% block quotes %}
-<blockquote class="blockquote">
-    <div class="Section-module--section--35E8i" style="font-size: 1.7rem;">
-        <div class="Section-module--sectionInner--3B0PK">
-            <h1>Suppliers</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Supplier ID</th>
-                        <th>Name</th>
-                        <th>Contact Name</th>
-                        <th>Phone</th>
-                        <th>Address</th>
-                        <th>City</th>
-                        <th>Postal Code</th>
-                        <th>Country</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for supplier in suppliers %}
-                    <tr>
-                        <td>{{ supplier.supplier_id }}</td>
-                        <td>{{ supplier.supplier_name }}</td>
-                        <td>{{ supplier.contact_name }}</td>
-                        <td>{{ supplier.phone }}</td>
-                        <td>{{ supplier.address }}</td>
-                        <td>{{ supplier.city }}</td>
-                        <td>{{ supplier.postal_code }}</td>
-                        <td>{{ supplier.country }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+     <!-- Footer -->
+     <footer class="footer">
+        <div class="container">
+            <div class="container">
+                <br>
+                        <br>
+                        
+                <div class="row">
+                    <div class="col-md-3">
+                        <!-- Section 1 content -->
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 162.8 164.8" width="168" height="168" aria-hidden="true">
+                                    <title>Face Icon</title>
+                                  
+                                    <defs>
+                                      <!-- Define a gradient for the face if needed -->
+                                      <linearGradient id="faceGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" />
+                                      </linearGradient>
+                                    </defs>
+                                  
+                                    <!-- Left eye -->
+                                    <circle cx="61" cy="63" r="5" fill="white" />
+                                  
+                                    <!-- Right eye -->
+                                    <circle cx="101" cy="63" r="5" fill="white" />
+                                  
+                                    <!-- Nose -->
+                                    <path d="M81.4 85.4 L77.4 93.4 L85.4 93.4 Z" fill="white" />
+                                  
+                                    <!-- Mouth -->
+                                    <path d="M71 110 Q 81 115, 91 110" fill="none" stroke="white" stroke-width="4" />
+                                  
+                                    <!-- Spiky hair strands -->
+                                    <path d="M70 40 Q 55 40, 65 35 Q 75 40" fill="none" stroke="white" stroke-width="2" />
+                                    <path d="M70 40 Q 85 40, 95 35 Q 105 40" fill="none" stroke="white" stroke-width="2" />
+                                    <path d="M70 40 Q 65 20, 75 15 Q 85 20" fill="none" stroke="white" stroke-width="2" />
+                                    <path d="M70 40 Q 75 15, 85 10 Q 95 15" fill="none" stroke="white" stroke-width="2" />
+                                  </svg>
+                                  
+                            </div>
+                    </div>
+                    <div class="col-md-3">
+                        <!-- Section 1 content -->
+                            <div>
+                                <p style="color:white">Jason Lankshear<br>Andover<br>Hampshire</p>
+                            </div>
+                    </div>
+                    <div class="col-md-3">
+                        <!-- Section 2 content -->
+                            <div>
+                                <a style="color:white" href="https://www.linkedin.com/in/jason-lankshear-b65a21214" title="Go to LinkedIn.com">LinkedIn</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <!-- Section 3 content -->
+                            <div>
+                                <a style="color:white" href="/careers">Careers</a>
+                            </div>
+                    </div>
+                </div>
+            </div>
         
-            <h1>Warehouse Products</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Product ID</th>
-                        <th>Product Name</th>
-                        <th>Supplier</th>
-                        <th>Category</th>
-                        <th>Quantity Per Unit</th>
-                        <th>Unit Price</th>
-                        <th>Units In Stock</th>
-                        <th>Units On Order</th>
-                        <th>Reorder Level</th>
-                        <th>Discontinued</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for product in products %}
-                    <tr>
-                        <td>{{ product.product_id }}</td>
-                        <td>{{ product.product_name }}</td>
-                        <td>{{ product.supplier.supplier_name }}</td>
-                        <td>{{ product.category }}</td>
-                        <td>{{ product.quantity_per_unit }}</td>
-                        <td>{{ product.unit_price }}</td>
-                        <td>{{ product.units_in_stock }}</td>
-                        <td>{{ product.units_on_order }}</td>
-                        <td>{{ product.reorder_level }}</td>
-                        <td>{{ product.discontinued }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        
-            <h1>Customers</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Customer ID</th>
-                        <th>Name</th>
-                        <th>Contact Name</th>
-                        <th>Phone</th>
-                        <th>Address</th>
-                        <th>City</th>
-                        <th>Postal Code</th>
-                        <th>Country</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for customer in customers %}
-                    <tr>
-                        <td>{{ customer.customer_id }}</td>
-                        <td>{{ customer.customer_name }}</td>
-                        <td>{{ customer.contact_name }}</td>
-                        <td>{{ customer.phone }}</td>
-                        <td>{{ customer.address }}</td>
-                        <td>{{ customer.city }}</td>
-                        <td>{{ customer.postal_code }}</td>
-                        <td>{{ customer.country }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        
-            <h1>Orders</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Order ID</th>
-                        <th>Customer</th>
-                        <th>Order Date</th>
-                        <th>Required Date</th>
-                        <th>Shipped Date</th>
-                        <th>Ship Via</th>
-                        <th>Freight</th>
-                        <th>Ship Name</th>
-                        <th>Ship Address</th>
-                        <th>Ship City</th>
-                        <th>Ship Postal Code</th>
-                        <th>Ship Country</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for order in orders %}
-                    <tr>
-                        <td>{{ order.order_id }}</td>
-                        <td>{{ order.customer.customer_name }}</td>
-                        <td>{{ order.order_date }}</td>
-                        <td>{{ order.required_date }}</td>
-                        <td>{{ order.shipped_date }}</td>
-                        <td>{{ order.ship_via }}</td>
-                        <td>{{ order.freight }}</td>
-                        <td>{{ order.ship_name }}</td>
-                        <td>{{ order.ship_address }}</td>
-                        <td>{{ order.ship_city }}</td>
-                        <td>{{ order.ship_postal_code }}</td>
-                        <td>{{ order.ship_country }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        
-            <h1>Order Details</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Order Detail ID</th>
-                        <th>Order</th>
-                        <th>Product</th>
-                        <th>Unit Price</th>
-                        <th>Quantity</th>
-                        <th>Discount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for detail in order_details %}
-                    <tr>
-                        <td>{{ detail.order_detail_id }}</td>
-                        <td>{{ detail.order.order_id }}</td>
-                        <td>{{ detail.product.product_name }}</td>
-                        <td>{{ detail.unit_price }}</td>
-                        <td>{{ detail.quantity }}</td>
-                        <td>{{ detail.discount }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-
+            <span class="text-muted" ><p style="color:white">© 2024 All rights reserved.</p></span>
         </div>
-    </div>    
-</blockquote>
-{% endblock %}
+    </footer>
+    <!-- End of Footer -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-
-
-
-
-
+</body>
+</html>
+    

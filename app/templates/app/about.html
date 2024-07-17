@@ -1,138 +1,341 @@
-{% extends "app/base.html" %}
-
-{% block title %}About Page{% endblock %}
-
-{% block content %}
-<style>
-    .home {
-        width: 100%;
-        height: 15vh;
-        background-position: center top;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>About | Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"><link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    body {
+        background-color: #d0ccc4;
         background-size: cover;
-        background-attachment: fixed; /* This ensures the background is fixed */
-    }
-    .carousel {
-        width: 100%;
-        overflow: hidden;
-        position: relative;
-        margin: 0 auto;
-        max-width: 1200px; /* Adjust as per your design */
-        padding: 20px;
-    }
-    
-    .carousel-slides {
-        display: flex;
-        transition: transform 0.5s ease;
-    }
-    
-    .slide {
-        flex: 0 0 100%; /* Ensure each slide takes full width */
-        text-align: center;
-        position: relative;
-    }
-    
-    .slide img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-    }
-    
-    .caption {
-        position: absolute;
-        bottom: 20px;
-        left: 0;
-        right: 0;
-        text-align: center;
-        background-color: rgba(0, 0, 0, 0.7);
-        color: white;
-        padding: 10px;
-    }
-    
-    .caption h3 {
-        margin: 0;
-        font-size: 1.5rem;
-    }
-    
-    .caption p {
-        margin: 5px 0 0;
-        font-size: 1rem;
-    }
-    
-    /* Ensure the active slide is visible */
-    .slide.active {
-        display: block;
-    }
-    
-    /* Optional: Styling for navigation arrows or indicators */
-    
-</style>
-
-<div class="home">
-    <div>
-        <h4 style="
         text-align: left;
         font-family: 'Roboto', serif;
-        font-size: 2.5rem;
+        font-size: 1.4rem;
         color: black;
-        padding: 20px;
-        font-size: 2rem;
-        margin-top: 0vh;">
-        Hi I'm Jason, a Data engineer and I embarked on building a Django website and deploying it on Azure App Services with a PostgreSQL database to demonstrate my expertise in Python and proficiency with Azure cloud services. Leveraging GitHub for version control and continuous integration/continuous deployment (CI/CD), I successfully established a robust deployment pipeline. Looking ahead, I aim to enrich the site’s functionality by integrating JavaScript to capture user clicks, which will be streamed to Azure Event Hubs for real-time data ingestion. Azure Stream Analytics will then process this data in-flight, facilitating rapid insights. The processed data will find its home in Azure Data Lake Storage for long-term archival. Utilizing Python, I plan to analyze and visualize this data, creating compelling visuals that enhance understanding and drive actionable insights.
-        </h3>
+        }
+    nav {
+        font-family: 'Roboto', serif;
+        color: white;
+        font-size: 1.1rem;
+        }
+        .w3-button-transparent {
+            background-color: transparent;
+        }
+        .nav-link {
+            display: inline-block;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: inherit; /* inherit the color from the applied class */
+            border: 1px solid;
+            border-radius: 4px;
+            
+        }
+    /* Set a fixed height for the footer */
+    .footer {
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(21, 37, 54);
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+    }
+    .additional-section {
+        position: relative;
+        width: 100%;
+        padding-bottom: 2rem; /* Adjust padding to create space for the line */
+      }
+      .additional-section::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 7.5%;
+        width: 85%;
+        height: 1px; /* Adjust height for line thickness */
+        background-color: orange;
+      }
+      .bg-color-1 {
+        background-color: rgb(21, 37, 54);
+      }
+      .bg-color-2 {
+        background-color: #d0ccc4; /* Example color */
+      }
+      .bg-color-3 {
+        background-color: #5cb85c; /* Example color */
+      }
+      @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
+    .fancy-text-1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem; /* Adjust size as needed */
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      margin: 20px 0;
+      white-space: normal; /* Ensure text wraps */
+      word-break: break-word; /* Break long words */
+    }
+    .fancy-text-2 {
+        font-family: 'Papyrus', fantasy;
+        font-size: 1.3rem; /* Adjust size as needed */
+        text-align: left;
+        margin: 20px 0;
+        white-space: normal; /* Ensure text wraps */
+        word-break: break-word; /* Break long words */
+    }
+      .fancy-text-3 {
+        font-family: 'Great Vibes', cursive;
+        font-size: 1.2rem; /* Adjust size as needed */
+        text-align: center;
+        margin: 20px 0;
+        white-space: normal; /* Ensure text wraps */
+        word-break: break-word; /* Break long words */
+    }
+    .ft-color-1 {
+        color: #d0ccc4; /* Customize color */
+    }
+    .ft-color-2 {
+        color: rgb(21, 37, 54); /* Customize color */
+    }
+    .carousel-item {
+        height: 400px; /* Adjust the height as needed */
+      }
+      .carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.5; /* Optional: Make the image semi-transparent to better show text */
+      }
+      .carousel-caption {
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .carousel-indicators li {
+        background-color: white;
+      }
+  </style>
+</head>
 
+<nav>
+    <div class="container mt-3">
+        <ul class="nav">
+            <li>       
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 162.8 164.8" width="55" height="55" aria-hidden="true">
+            <title>Face Icon</title>
+    
+                <defs>
+                    <!-- Define a gradient for the face if needed -->
+                    <linearGradient id="faceGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%"/>
+                </linearGradient>
+                </defs>
+                <!-- Left eye -->
+                <circle cx="61" cy="63" r="5" fill="url(#faceGradient)" />
+    
+                <!-- Right eye -->
+                <circle cx="101" cy="63" r="5" fill="url(#faceGradient)" />
+    
+                <!-- Nose -->
+                <path d="M81.4 85.4 L77.4 93.4 L85.4 93.4 Z" fill="url(#faceGradient)" />
+    
+                <!-- Mouth -->
+                <path d="M71 110 Q 81 115, 91 110" fill="none" stroke="url(#faceGradient)" stroke-width="4" />
+    
+                <!-- Spiky hair strands -->
+                <path d="M70 40 Q 55 40, 65 35 Q 75 40" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
+                <path d="M70 40 Q 85 40, 95 35 Q 105 40" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
+                <path d="M70 40 Q 65 20, 75 15 Q 85 20" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
+                <path d="M70 40 Q 75 15, 85 10 Q 95 15" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
+            
+            </svg>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="/data_page">Data Cleansing</a>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="/sql2">Warehouse Example</a>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="/sql">SQLFiddle</a>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="/generate_product">Generate Product(s)</a>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="/showcase">Box</a>
+            </li>
+        </ul>
     </div>
-</div>
-{% endblock %}
+</nav>
 
-{% block content3 %}
-<h2>As a data engineer, remember: You'll spend half your time wrestling with data and the other half crafting eloquent prose to explain what you've done, what it all means, and why it's as unruly as a cat in a bathtub!</h2>
-{% endblock %}
-
-{% block quotes %}
-<blockquote class="blockquote">
-    <div class="carousel">
-        <div class="carousel-slides">
-            {% for slide in slides %}
-            <div class="slide {% if forloop.first %}active{% endif %}">
-                <img src="{{ slide.image.url }}" alt="{{ slide.title }}">
-                <div class="caption">
-                    <h3>{{ slide.title }}</h3>
-                    <p>{{ slide.description }}</p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-4">        
+            <h2 class="fancy-text-2">Why build this site</h2>
+            <p class="fancy-text-2">Hi I'm Jason, a Data engineer and I embarked on building a Django website and deploying it on Azure App Services 
+                with a PostgreSQL database to demonstrate my expertise in Python and proficiency with Azure cloud services. Leveraging GitHub for 
+                version control and continuous integration/continuous deployment (CI/CD), I successfully established a connection and can quickly and easily push and release changes.
+                 Looking ahead, I aim to enrich the site’s functionality by integrating JavaScript to capture user clicks, which will be streamed to
+                  Azure Event Hubs for real-time data ingestion. Azure Stream Analytics will then process this data in-flight, facilitating rapid insights.
+                   The processed data will find its home in Azure Data Lake Storage for long-term archival. Utilizing Python, I plan to analyze and visualize
+                    this data, creating compelling visuals that enhance understanding and drive actionable insights.</p>
+                    <br>
+                </div>    
+        
+            <hr class="d-sm-none">
+                <div class="col-sm-8">
+                    <br>
+                    <br>
+                    <br>
+                    <h2 class="fancy-text-1 ft-color-2">A Pictoral depiction of my project.</h2>
+                    <br>
+                    <!-- Carousel -->
+                    <div id="textCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+                        
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img src="/media/carousel_images/VSCode.png" alt="Personal Coding Setup">
+                            <div class="carousel-caption">
+                              <h3>VSCode setup on Mac book</h3>
+                              <p>All code has been written by hand in VSCode.</p>
+                            </div>
+                          </div>
+                          <div class="carousel-item">
+                            <img src="/media/carousel_images/Docker.png" alt="Docker Container">
+                            <div class="carousel-caption">
+                              <h3>Docker Container</h3>
+                              <p>Provides a consistent environment for development, testing, and deployment.</p>
+                            </div>
+                          </div>
+                          <div class="carousel-item">
+                            <img src="/media/carousel_images/flex_server.png" alt="SQL Server">
+                            <div class="carousel-caption">
+                              <h3 style="color:black">PostgreSQL</h3>
+                              <p style="color:black">A cheep PostgreSQL server on MS Azure.</p>
+                            </div>
+                          </div>
+                          <div class="carousel-item">
+                            <img src="/media/carousel_images/Deployment_Center.png" alt="Site deployment">
+                            <div class="carousel-caption">
+                                <h3 style="color:black">A free Website</h3>
+                                <p style="color:black">Used MS Azure to deploy a free site.</p>
+                            </div>
+                          </div>
+                          <div class="carousel-item">
+                            <img src="/media/carousel_images/Github.png" alt="Github setup">
+                            <div class="carousel-caption">
+                              <h3>Used Github for version control</h3>
+                              <p>Easily able to connect to MS Azure project for deployments.</p>
+                            </div>
+                          </div>
+                          <div class="carousel-item">
+                            <img src="/media/carousel_images/psql.png" alt="Connection to SQL server">
+                            <div class="carousel-caption">
+                              <h3>To be able to interact with PostgreSQL</h3>
+                              <p>Using a terminal I am able to connect to the PostgreSQL server on MS Azure.</p>
+                            </div>
+                          </div>
                 </div>
             </div>
-            {% endfor %}
         </div>
     </div>
+            <br>
+            <br>
+            <br>
+            <br>
+    </div> 
+</div> 
 
-    <script>
-        let slideIndex = 0; // Start from the first slide (index 0)
-        showSlide(slideIndex);
-    
-        // Change slides automatically every 3 seconds (3000 milliseconds)
-        let autoScrollInterval = setInterval(() => {
-            changeSlide(1);
-        }, 6000);
-    
-        function changeSlide(n) {
-            clearInterval(autoScrollInterval); // Stop automatic scrolling
-            showSlide(slideIndex += n);
-            autoScrollInterval = setInterval(() => { // Restart automatic scrolling after manual change
-                changeSlide(1);
-            }, 6000);
-        }
-    
-        function showSlide(n) {
-            let slides = document.getElementsByClassName("slide");
-            if (n >= slides.length) { slideIndex = 0 } // Wrap around to the first slide
-            if (n < 0) { slideIndex = slides.length - 1 } // Wrap around to the last slide
-    
-            for (let slide of slides) {
-                slide.style.display = "none"; // Hide all slides
-            }
-            slides[slideIndex].style.display = "block"; // Show the current slide
-        }
-    </script>
-</blockquote>
-{% endblock %}
+
+<!-- Additional Section Above Footer -->
+<div class="additional-section py-5 text-white bg-color-1">
+    <div class="container">
+        <div class="col">
+        <h2 class="fancy-text-1 ft-color-1">As a data engineer, remember: You'll spend half your time wrestling with data and the other half crafting eloquent prose to explain what you've done, what it all means, and why it's as unruly as a cat in a bathtub!</h2>
+        </div>
+    </div>
+</div>
+
+     <!-- Footer -->
+     <footer class="footer">
+        <div class="container">
+            <div class="container">
+                <br>
+                        <br>
+                        
+                <div class="row">
+                    <div class="col-md-3">
+                        <!-- Section 1 content -->
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 162.8 164.8" width="168" height="168" aria-hidden="true">
+                                    <title>Face Icon</title>
+                                  
+                                    <defs>
+                                      <!-- Define a gradient for the face if needed -->
+                                      <linearGradient id="faceGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" />
+                                      </linearGradient>
+                                    </defs>
+                                  
+                                    <!-- Left eye -->
+                                    <circle cx="61" cy="63" r="5" fill="white" />
+                                  
+                                    <!-- Right eye -->
+                                    <circle cx="101" cy="63" r="5" fill="white" />
+                                  
+                                    <!-- Nose -->
+                                    <path d="M81.4 85.4 L77.4 93.4 L85.4 93.4 Z" fill="white" />
+                                  
+                                    <!-- Mouth -->
+                                    <path d="M71 110 Q 81 115, 91 110" fill="none" stroke="white" stroke-width="4" />
+                                  
+                                    <!-- Spiky hair strands -->
+                                    <path d="M70 40 Q 55 40, 65 35 Q 75 40" fill="none" stroke="white" stroke-width="2" />
+                                    <path d="M70 40 Q 85 40, 95 35 Q 105 40" fill="none" stroke="white" stroke-width="2" />
+                                    <path d="M70 40 Q 65 20, 75 15 Q 85 20" fill="none" stroke="white" stroke-width="2" />
+                                    <path d="M70 40 Q 75 15, 85 10 Q 95 15" fill="none" stroke="white" stroke-width="2" />
+                                  </svg>
+                                  
+                            </div>
+                    </div>
+                    <div class="col-md-3">
+                        <!-- Section 1 content -->
+                            <div>
+                                <p style="color:white">Jason Lankshear<br>Andover<br>Hampshire</p>
+                            </div>
+                    </div>
+                    <div class="col-md-3">
+                        <!-- Section 2 content -->
+                            <div>
+                                <a style="color:white" href="https://www.linkedin.com/in/jason-lankshear-b65a21214" title="Go to LinkedIn.com">LinkedIn</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <!-- Section 3 content -->
+                            <div>
+                                <a style="color:white" href="/careers">Careers</a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        
+            <span class="text-muted" ><p style="color:white">© 2024 All rights reserved.</p></span>
+        </div>
+    </footer>
+    <!-- End of Footer -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
