@@ -1,96 +1,382 @@
-{% extends "app/base.html" %}
-
-{% block title %}Home Page{% endblock %}
-
-{% block content %}
-<style>
-    .home {
-        width: 100%;
-        height: 50vh;
-        background-image: url('https://wallpapercave.com/wp/wp2762359.jpg');
-        background-position: center top;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home | Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"><link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    body {
+        background: url('https://wallpapercave.com/wp/wp2762359.jpg') no-repeat center center fixed;
         background-size: cover;
-        background-attachment: fixed; /* This ensures the background is fixed */
-    }
-</style>
-
-<div class="home">
-    <h3 style="
-    text-align: left;
-    font-family: 'Roboto', serif;
-    font-size: 2rem;
-    color: white;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    font-size: 3rem;
-    left-padding: 15px;">Welcome to my digital playground, where code and creativity collide! This ever-evolving masterpiece is my journey to Python mastery and Azure awesomeness. Dive in, explore, and watch as I turn bugs into features, one line of code at a time!</h3>
-    
-</div>
-{% endblock %}
-{% block content3 %}
-        <h2>Choose sustainability over excess;<br> our planet's future depends on it.</h2>
-        {% endblock %}
-{% block quotes %}
-<blockquote class="blockquote">
-    <!-- Soundbite quotes go here -->
-    <div style="background-color: rgb(21, 37, 54);">
-        <div style="width: 100%;  padding: 50px 0;">
-        <div class="Topper-module--benefits--2kaZ9">
-            <div class="Topper-module--benefit--37IVh Topper-module--benefit--active--7f7pL" style="color: white;">
-            <h5 class="Topper-module--benefit__header--3y7UY">Data Collection</h5>
+        text-align: left;
+        font-family: 'Roboto', serif;
+        font-size: 1.4rem;
+        color: white;
+        }
+    nav {
+        font-family: 'Roboto', serif;
+        color: white;
+        font-size: 1.1rem;
+        }
+        .w3-button-transparent {
+            background-color: transparent;
+        }
+        .nav-link {
+            display: inline-block;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: inherit; /* inherit the color from the applied class */
+            border: 1px solid;
+            border-radius: 4px;
             
-            <div class="Topper-module--benefit__body--eTyxt" style="color: white;">
-                <p>Ensure that all relevant data points are captured to provide a comprehensive view.</p>
-            </div>
+        }
+    /* Set a fixed height for the footer */
+    .footer {
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(21, 37, 54);
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+    }
+    .additional-section {
+        position: relative;
+        width: 100%;
+        padding-bottom: 2rem; /* Adjust padding to create space for the line */
+      }
+      .additional-section::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 7.5%;
+        width: 85%;
+        height: 1px; /* Adjust height for line thickness */
+        background-color: orange;
+      }
+      .bg-color-1 {
+        background-color: rgb(21, 37, 54);
+      }
+      .bg-color-2 {
+        background-color: #d0ccc4; /* Example color */
+      }
+      .bg-color-3 {
+        background-color: #5cb85c; /* Example color */
+      }
+      @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
-        </div>
+    .fancy-text-1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem; /* Adjust size as needed */
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      margin: 20px 0;
+      white-space: normal; /* Ensure text wraps */
+      word-break: break-word; /* Break long words */
+    }
+    .fancy-text-2 {
+        font-family: 'Papyrus', fantasy;
+        font-size: 1.3rem; /* Adjust size as needed */
+        text-align: center;
+        margin: 20px 0;
+        white-space: normal; /* Ensure text wraps */
+        word-break: break-word; /* Break long words */
+    }
+      .fancy-text-3 {
+        font-family: 'Great Vibes', cursive;
+        font-size: 1.2rem; /* Adjust size as needed */
+        text-align: center;
+        margin: 20px 0;
+        white-space: normal; /* Ensure text wraps */
+        word-break: break-word; /* Break long words */
+    }
+    .ft-color-1 {
+        color: #d0ccc4; /* Customize color */
+    }
+    .ft-color-2 {
+        color: rgb(21, 37, 54); /* Customize color */
+    }
+  </style>
+</head>
+
+<nav>
+    <div class="container mt-3">
+        <ul class="nav">
+            <li>       
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 162.8 164.8" width="55" height="55" aria-hidden="true">
+            <title>Face Icon</title>
     
-        <div class="Topper-module--benefit--37IVh Topper-module--benefit--active--7f7pL" style="color: white;">
-            <h5 class="Topper-module--benefit__header--3y7UY">Data Storage</h5>
-            <div class="Topper-module--benefit__body--eTyxt" style="color: white;">
-                <p>Accessibility and scalability are key considerations.</p>
-            </div>
-        </div>
-        <div class="Topper-module--benefit--37IVh Topper-module--benefit--active--7f7pL" style="color: white;">
-            <h5 class="Topper-module--benefit__header--3y7UY">Insights</h5>
-            <div class="Topper-module--benefit__body--eTyxt" style="color: white;">
-                <p>Businesses invest in data to gain valuable insights.</p>
-            </div>
-        </div>
-        </div>
+                <defs>
+                    <!-- Define a gradient for the face if needed -->
+                    <linearGradient id="faceGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%"/>
+                </linearGradient>
+                </defs>
+                <!-- Left eye -->
+                <circle cx="61" cy="63" r="5" fill="url(#faceGradient)" />
+    
+                <!-- Right eye -->
+                <circle cx="101" cy="63" r="5" fill="url(#faceGradient)" />
+    
+                <!-- Nose -->
+                <path d="M81.4 85.4 L77.4 93.4 L85.4 93.4 Z" fill="url(#faceGradient)" />
+    
+                <!-- Mouth -->
+                <path d="M71 110 Q 81 115, 91 110" fill="none" stroke="url(#faceGradient)" stroke-width="4" />
+    
+                <!-- Spiky hair strands -->
+                <path d="M70 40 Q 55 40, 65 35 Q 75 40" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
+                <path d="M70 40 Q 85 40, 95 35 Q 105 40" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
+                <path d="M70 40 Q 65 20, 75 15 Q 85 20" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
+                <path d="M70 40 Q 75 15, 85 10 Q 95 15" fill="none" stroke="url(#faceGradient)" stroke-width="2" />
+            
+            </svg>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="/data_page">Data Cleansing</a>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="/sql2">Warehouse Example</a>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="/sql">SQLFiddle</a>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="/generate_product">Generate Product(s)</a>
+            </li>
+            <li class="nav-item">
+                <a class="w3-button w3-text-white w3-border w3-border-white w3-button-transparent nav-link" href="/showcase">Box</a>
+            </li>
+        </ul>
     </div>
-    <div class="Section-module--section--35E8i" style="font-size: 1.7rem;">
-        <div class="Section-module--sectionInner--3B0PK">
+</nav>
 
-            <ul class="Values-module--values--2V9nS">
-                <li class="Values-module--value--3BOh-">
-                    <h5 class="Values-module--value__title--3Q1YK">Execution</h5>
-                    <div class="Values-module--value__desc--2fzuZ">
-                        <p>Get things done. Refuse to stagnate. Deliver with speed.</p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-4">        
+            <h2>About Me</h2>
+            <p>I am an inquisitive and hard-working data engineer with a proven track record in data analysis and the creation of innovative ETL (Extract, Transform, Load) frameworks and models. With a strong background in data engineering, I combine tenacity and a high tolerance for complex challenges to deliver robust solutions that drive business insights and efficiency. Passionate about leveraging data to solve problems and drive innovation, I thrive in dynamic environments where creativity and technical expertise are paramount.</p>
+        </div>    
+            <hr class="d-sm-none">
+                <div class="col-sm-8">
+                    <h2>My Site</h2>
+                    <h5>Site Last Update, July 17, 2024</h5>
+                     <h5>Released on MS Azure App Services</h5>
+                    <h5>Service Plan: Free</h5>
+                    <h5>Database, Azure Database for PostgreSQL flexible server</h5>
+                    <h5><span style="color: black;">Contents</span></h5>
+                    <p><span style="color: black;">Welcome to my digital playground, </span>where code and creativity collide! This ever-evolving masterpiece 
+                                is my journey to Python mastery and Azure awesomeness. Dive in, explore, and watch as
+                                I turn bugs into features, one
+                                <span style="color: white;">line of code at a time!</span></p>
+      
+                    <h2 class="mt-5">What's to Come</h2>
+                    <ul>
+                        <li>
+                            <p>Continuing development of this site.</p>
+                        </li>
+                        <li>
+                            <p>Examples of ETL/ELT pipelines I have designed and deployed.</p>
+                        </li>
+                        <li>
+                            <p>Data Cleansing with Python.</p>
+                        </li>
+                        <li>
+                            <p>Example Data Warehouse.</p>
+                        </li>
+                        <li>
+                            <p>????????</p>
+                        </li>
+                    </ul>
+                </div>
+            
+            <br>
+            <br>
+            <br>
+            <br>
+    </div> 
+</div> 
+
+<div class="additional-section py-5 text-white bg-color-1">
+    <div class="container">            
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <!-- Section 1 content -->
+                        <div class="card" style="background-color: transparent; border: 1px solid transparent;">
+                            <div class="card-body">
+                                <h5 class="fancy-text-2 ft-color-1">Data Collection</h5>
+            
+                                <div class="fancy-text-2 ft-color-1">
+                                    <p>Ensure that all relevant data points are captured to provide a comprehensive view.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </li>
-                <li class="Values-module--value--3BOh-"><h5 class="Values-module--value__title--3Q1YK">Refining</h5>
-                    <div class="Values-module--value__desc--2fzuZ">
-                        <p>Find and build on your best qualities.</p>
+                    <div class="col-md-4">
+                        <!-- Section 2 content -->
+                        <div class="card" style="background-color: transparent; border: 1px solid transparent;">
+                            <div class="card-body">
+                                <div class="fancy-text-2 ft-color-1">
+                                <h5 class="fancy-text-2 ft-color-1">Data Storage</h5>
+            
+                                <div>
+                                    <p>Accessibility and scalability are key considerations.</p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                     </div>
-                </li>
-                <li class="Values-module--value--3BOh-"><h5 class="Values-module--value__title--3Q1YK">Integrity</h5>
-                    <div class="Values-module--value__desc--2fzuZ">
-                        <p>Stand firm in your values, even when no one is watching.</p>
+                    <div class="col-md-4">
+                        <!-- Section 3 content -->
+                        <div class="card" style="background-color: transparent; border: 1px solid transparent;">
+                            <div class="card-body">
+                                <h5 class="fancy-text-2 ft-color-1">Insights</h5>
+            
+                                <div class="fancy-text-2 ft-color-1">
+                                    <p>Businesses invest in data to gain valuable insights.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </li>
-                <li class="Values-module--value--3BOh-">
-                    <h5 class="Values-module--value__title--3Q1YK">Impact</h5>
-                    <div class="Values-module--value__desc--2fzuZ">
-                        <p>Create change that resonates beyond today.</p>
+                </div>
+            </div>
+    </div>
+</div>       
+
+<!-- Additional Section Above Footer -->
+<div class="additional-section py-5 text-white bg-color-2">
+    <div class="container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- Section 1 content -->
+                    <div class="card" style="background-color: transparent; border: 1px solid transparent;">
+                        <div class="card-body">
+                            <h5 class="fancy-text-3 ft-color-2">Execution</h5>
+                            <p class="fancy-text-3 ft-color-2">Get things done. Refuse to stagnate. Deliver with speed.</p>
+                        </div>
                     </div>
-                </li>
-            </ul>
+                </div>
+                <div class="col-md-3">
+                    <!-- Section 2 content -->
+                    <div class="card" style="background-color: transparent; border: 1px solid transparent;">
+                        <div class="card-body">
+                            <h5 class="fancy-text-3 ft-color-2">Refining</h5>
+                            <p class="fancy-text-3 ft-color-2">Find and build on your best qualities.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <!-- Section 3 content -->
+                    <div class="card" style="background-color: transparent; border: 1px solid transparent;">
+                        <div class="card-body">
+                            <h5 class="fancy-text-3 ft-color-2">Integrity</h5>
+                            <p class="fancy-text-3 ft-color-2">Stand firm in your values, even when no one is watching.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <!-- Section 3 content -->
+                    <div class="card" style="background-color: transparent; border: 1px solid transparent;">
+                        <div class="card-body">
+                            <h5 class="fancy-text-3 ft-color-2">Impact</h5>
+                            <p class="fancy-text-3 ft-color-2">Create change that resonates beyond today.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <footer class="blockquote-footer">
+</div>
+
+<!-- Additional Section Above Footer -->
+<div class="additional-section py-5 text-white bg-color-1">
+    <div class="container">
+        <div class="col">
+        <h2 class="fancy-text-1 ft-color-1">Choose sustainability over excess; our planet's future depends on it.</h2>
+        </div>
+    </div>
+</div>
+
+     <!-- Footer -->
+     <footer class="footer">
+        <div class="container">
+            <div class="container">
+                <br>
+                        <br>
+                        
+                <div class="row">
+                    <div class="col-md-3">
+                        <!-- Section 1 content -->
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 162.8 164.8" width="168" height="168" aria-hidden="true">
+                                    <title>Face Icon</title>
+                                  
+                                    <defs>
+                                      <!-- Define a gradient for the face if needed -->
+                                      <linearGradient id="faceGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" />
+                                      </linearGradient>
+                                    </defs>
+                                  
+                                    <!-- Left eye -->
+                                    <circle cx="61" cy="63" r="5" fill="white" />
+                                  
+                                    <!-- Right eye -->
+                                    <circle cx="101" cy="63" r="5" fill="white" />
+                                  
+                                    <!-- Nose -->
+                                    <path d="M81.4 85.4 L77.4 93.4 L85.4 93.4 Z" fill="white" />
+                                  
+                                    <!-- Mouth -->
+                                    <path d="M71 110 Q 81 115, 91 110" fill="none" stroke="white" stroke-width="4" />
+                                  
+                                    <!-- Spiky hair strands -->
+                                    <path d="M70 40 Q 55 40, 65 35 Q 75 40" fill="none" stroke="white" stroke-width="2" />
+                                    <path d="M70 40 Q 85 40, 95 35 Q 105 40" fill="none" stroke="white" stroke-width="2" />
+                                    <path d="M70 40 Q 65 20, 75 15 Q 85 20" fill="none" stroke="white" stroke-width="2" />
+                                    <path d="M70 40 Q 75 15, 85 10 Q 95 15" fill="none" stroke="white" stroke-width="2" />
+                                  </svg>
+                                  
+                            </div>
+                    </div>
+                    <div class="col-md-3">
+                        <!-- Section 1 content -->
+                            <div>
+                                <p style="color:white">Jason Lankshear<br>Andover<br>Hampshire</p>
+                            </div>
+                    </div>
+                    <div class="col-md-3">
+                        <!-- Section 2 content -->
+                            <div>
+                                <a style="color:white" href="https://www.linkedin.com/in/jason-lankshear-b65a21214" title="Go to LinkedIn.com">LinkedIn</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <!-- Section 3 content -->
+                            <div>
+                                <a style="color:white" href="/careers">Careers</a>
+                            </div>
+                    </div>
+                </div>
+            </div>
         
-        
+            <span class="text-muted" ><p style="color:white">© 2024 All rights reserved.</p></span>
+        </div>
     </footer>
-</blockquote>
-{% endblock %}
+    <!-- End of Footer -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
