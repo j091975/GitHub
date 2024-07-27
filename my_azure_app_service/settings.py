@@ -142,3 +142,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# settings.py
+
+EVENT_HUB_CONNECTION_STRING = os.environ.get('EVENT_HUB_CONNECTION_STRING')
+EVENT_HUB_NAME = os.environ.get('EVENT_HUB_NAME')
+
+
+AZURE_STORAGE_ACCOUNT_NAME = os.environ.get('AZURE_STORAGE_ACCOUNT_NAME')
+AZURE_STORAGE_ACCOUNT_KEY = os.environ.get('AZURE_STORAGE_ACCOUNT_KEY')
+AZURE_CONTAINER_NAME = os.environ.get('AZURE_CONTAINER_NAME')

@@ -18,18 +18,137 @@ from django.views import View
 from sklearn.datasets import fetch_california_housing
 #import matplotlib.pyplot as plt
 from django.conf import settings
-#import seaborn as sns
+# views.py
+import tempfile
+import json
+import logging
+from django.http import JsonResponse
+from django.views import View
+from django.conf import settings
+from azure.eventhub import EventHubProducerClient, EventData, EventHubConsumerClient
+from datetime import datetime
 
-# Step 3: Data Preprocessing
-#from sklearn.model_selection import train_test_split
-#from sklearn.preprocessing import StandardScaler
-# Step 4: Model Training and Evaluation
-#from sklearn.linear_model import LinearRegression
-#from sklearn.metrics import mean_squared_error, r2_score
-# Step 5: Model Interpretation and Insights
-#import numpy as np
-# Step 6: Further Model Tuning (Optional)
-#from sklearn.ensemble import RandomForestRegressor
+
+
+from azure.storage.blob import BlobServiceClient
+from azure.storage.blob import BlobClient
+
+def get_blob_service_client():
+    account_name = settings.AZURE_STORAGE_ACCOUNT_NAME
+    account_key = settings.AZURE_STORAGE_ACCOUNT_KEY
+    connection_string = f'DefaultEndpointsProtocol=https;AccountName={account_name};AccountKey={account_key};EndpointSuffix=core.windows.net'
+    return BlobServiceClient.from_connection_string(connection_string)
+
+blob_service_client = get_blob_service_client()
+
+import tempfile
+
+def read_parquet_from_blob(blob_name):
+    blob_service_client = get_blob_service_client()
+    blob_client = blob_service_client.get_blob_client(container=settings.AZURE_CONTAINER_NAME, blob=blob_name)
+
+    # Download the blob to a temporary file
+    temp_file_path = None
+    try:
+        with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+            temp_file_path = temp_file.name
+            download_stream = blob_client.download_blob()
+            temp_file.write(download_stream.read())
+            temp_file.flush()  # Ensure all data is written
+
+        # Read the Parquet file into a DataFrame
+        df = pd.read_parquet(temp_file_path)
+        return df
+
+    except Exception as e:
+        return e
+
+    finally:
+        # Ensure the temporary file is deleted if it exists
+        if temp_file_path and os.path.exists(temp_file_path):
+            os.remove(temp_file_path)
+
+def list_blobs_in_container():
+    blob_service_client = get_blob_service_client()
+    container_client = blob_service_client.get_container_client(settings.AZURE_CONTAINER_NAME)
+    
+    blob_list = container_client.list_blobs()
+    blobs = [blob.name for blob in blob_list]
+    
+    return blobs
+class ClickEventView(View):
+   
+    def get(self, request):
+        try:
+            #parquet_files = []
+            #dataframes = []
+            #blobs = list_blobs_in_container()
+            #for b in blobs:
+            #    if '.parquet' in b and 'incoming/_delta_log/' not in b:
+            #        parquet_files.append(b.replace("'",""))
+            #
+            #        df = read_parquet_from_blob(b)
+            #        dataframes.append(df)
+            #
+            #combined_df = pd.concat(dataframes, ignore_index=True)
+            ## Convert DataFrame to HTML
+            #html_table = combined_df.to_html(classes='table table-striped table-bordered', index=False)
+            #context = {
+            #    'stream' : html_table,
+            #    'Blobsincontainer' : parquet_files,
+            #}
+            #return render(request, 'app/click-event.html', context)
+            #return HttpResponse(f'Blobs in container:<br>{blob_list_html}')
+            return render(request, 'app/click-event.html')
+        except Exception as e:
+            return render(request, 'app/click-event.html')
+
+    #def post(self, request):
+    #    return JsonResponse({'message': 'Event received successfully'}, status=200)
+    
+    def post(self, request):
+        try:
+            # Get the current date and time
+            now = datetime.now()
+            # Create a JSON string with formatted date and time
+            json_string = f'''
+            [
+                {{
+                    "page": "click-event",
+                    "date": "{now.strftime('%Y-%m-%d')}",
+                    "time": "{now.strftime('%H:%M:%S')}",
+                    "nestedKey": {{
+                        "author": "me"
+                    }},
+                    "model": [
+                        "version1",
+                        "2024-07-19"
+                    ]
+                }}
+            ]
+            '''
+            # Get the JSON data from the request
+            event_data = json.loads(json_string)
+
+            # Initialize the EventHubProducerClient
+            producer = EventHubProducerClient.from_connection_string(
+                conn_str=settings.EVENT_HUB_CONNECTION_STRING,
+                eventhub_name=settings.EVENT_HUB_NAME
+            )
+
+            # Create an EventDataBatch
+            event_data_batch = producer.create_batch()
+
+            # Add event data to the batch
+            event_data_batch.add(EventData(json.dumps(event_data)))
+
+            # Send the batch of events to the event hub
+            producer.send_batch(event_data_batch)
+
+            return JsonResponse({'message': 'Event sent to Azure Event Hub successfully'}, status=200)
+        
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
 
 def generate_random_location():
     # Randomly choose one of 'AND', 'BAS', 'SAL'

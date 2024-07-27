@@ -9,9 +9,18 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 
 # Install system dependencies
+#RUN apt-get update && apt-get install -y \
+#    libpq-dev \
+#    gcc \
+#    && rm -rf /var/lib/apt/lists/*
+
+# Install build dependencies
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     gcc \
+    cmake \
+    make \
+    g++ \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy the requirements file into the container
